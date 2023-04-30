@@ -13,7 +13,9 @@ interface GitHubServiceRequest {
     fun getUser(@Path("username") username: String): Call<User>
 
 
-    @GET("users/{user}/email")
+
+
+    @GET("users/{user}/followers")
 
     fun getfollo(@Path("user") user: String): Call<List<User>>
 
