@@ -35,9 +35,11 @@ class MainActivity : AppCompatActivity() {
                         val name = user?.User ?: user?.login ?: "Unknown user"
                         val followers = user?.followers ?: "Unknown followers"
                         val following = user?.following ?: "Unknown following"
+
                         Log.d("GithubApi", "Name: $name")
                         Log.d("GithubApi", "Followers: $followers")
                         Log.d("GithubApi", "Following: $following")
+
                     } else {
                         Log.e("GithubApi", "Error: ${response.code()}")
                     }
@@ -52,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val followers = response.body()
                         followers?.forEach {
-                            Log.d("GithubApi", "Followin: ${it.login}")
+                            Log.d("GithubApi", "Followin: ${it.followers}")
                         }
                     } else {
                         Log.e("GithubApi", "Error: ${response.code()}")
@@ -67,8 +69,12 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<List<Repository>>, response: Response<List<Repository>>) {
                     if (response.isSuccessful) {
                         val followers = response.body()
+                        val url = followers?.get(0)?.url ?: "Unknown url"
                         followers?.forEach {
-                            Log.d("GithubApi", "Favoritos: ${it.name}")
+                            Log.d("GithubApi", "Repositorios: ${it.name}")
+
+                            Log.d("Repo URL:","https://github.com/$username"+"/"+it.name)
+
                         }
                     } else {
                         Log.e("GithubApi", "Error: ${response.code()}")
