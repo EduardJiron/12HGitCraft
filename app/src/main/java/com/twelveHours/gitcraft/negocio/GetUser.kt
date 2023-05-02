@@ -9,9 +9,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GetUser {
-
-
-
     fun getUser(githubApiService: GitHubServiceRequest, username: String, listener: GetUserListener) {
 
         githubApiService.getUser(username).enqueue(object : Callback<User> {
@@ -22,7 +19,7 @@ class GetUser {
                     val followers = user?.followers ?: "Unknown followers"
                     val following = user?.following ?: "Unknown following"
 
-                    listener.onUserLoaded(name, followers.toString(), following.toString())
+                    listener.onUserLoaded(name, followers, following)
                 } else {
                     Log.e("GithubApi", "Error: ${response.code()}")
                 }
