@@ -1,7 +1,7 @@
 package com.twelveHours.gitcraft.entidad
 
-import java.net.URL
 
+// clase que representa un repositorio
 data class Repository
     (val name: String,
      val url: String,)

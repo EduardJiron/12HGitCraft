@@ -1,5 +1,6 @@
 package com.twelveHours.gitcraft.entidad
 
+// clase que representa un usuario
 data class User(
     val User: String,
     val login: String,
