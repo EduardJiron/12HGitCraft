@@ -25,4 +25,6 @@ interface GitHubServiceRequest {
 
     @GET("users/{username}/repos")
     fun getStarredRepositories(@Path("username") username: String): Call<List<Repository>>
+
+
 }

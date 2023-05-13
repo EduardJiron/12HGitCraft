@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GitCraft</string>
+    <string name="nombreavatar">NombreAvatar</string>
 </resources>

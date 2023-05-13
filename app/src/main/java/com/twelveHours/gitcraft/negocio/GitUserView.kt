@@ -1,39 +1,41 @@
 package com.twelveHours.gitcraft.negocio
 
-import android.util.Log
-import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import com.twelveHours.gitcraft.entidad.User
+import com.twelveHours.gitcraft.datos.GitHubServiceRequest
+import com.twelveHours.gitcraft.datos.UserCallback
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class GitUserView {
 
-    fun getUser(githubApiService: GitHubServiceRequest, username: String) {
-
-        githubApiService.getUser(username).enqueue(object : Callback<User> {
+    fun getUser(gitHubServiceRequest: GitHubServiceRequest, username: String, callback: UserCallback) {
+        gitHubServiceRequest.getUser(username).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
-
                 if (response.isSuccessful) {
-
                     val user = response.body()
+                    val avatarUrl = user?.image
+                    val name = user?.User
 
-                    val name = user?.User ?: user?.login ?: "Unknown user"
-                    val followers = user?.followers ?: "Unknown followers"
-                    val following = user?.following ?: "Unknown following"
+                    if (user != null) {
+                        callback.onReposReceived(user)
+                        println("aquiiiiiiiiiiiiiiiiiii"+user.image)
+                        println(    "aquiiiiiiiiiiiiiiiiiii"+user.login)
 
-                    println("User: $name")
-                    println("Followers: $followers")
-                    println("Following: $following")
-                    println("------------------------------------")
+                    } else {
+                        callback.onError("User not found")
+                    }
                 } else {
-                    Log.e("GithubApi", "Error: ${response.code()}")
+                    callback.onError("Error: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.e("GithubApi", "Error: ${t.message}")
+                callback.onError("Error: ${t.message}")
             }
         })
     }
 }
+
+
