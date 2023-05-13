@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import com.twelveHours.gitcraft.entidad.Repository
-import okhttp3.OkHttpClient
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,9 +16,22 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+            val call =GitUserView()
+
+
+
+            button.setOnClickListener(){
+                call.getUser(githubApiService, username)
+            }
+
+
+
+        }
+
 
 
 }
     }
+
 
 
