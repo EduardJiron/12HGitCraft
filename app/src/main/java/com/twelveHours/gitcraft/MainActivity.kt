@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.twelveHours.gitcraft.datos.GitHubServiceRequest
+import com.twelveHours.gitcraft.negocio.GitRepoView
 import com.twelveHours.gitcraft.negocio.GitUserView
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,13 +24,12 @@ class MainActivity : AppCompatActivity(){
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
             val username = "EduardJiron"
-
-            val call = GitUserView()
-
-
+            val callU = GitUserView()
+            val callR = GitRepoView()
 
             button.setOnClickListener(){
-                call.getUser(githubApiService, username)
+                callU.getUser(githubApiService, username)
+                callR.getRepos(githubApiService, username)
             }
 
 

@@ -13,7 +13,8 @@ interface GitHubServiceRequest {
     @GET("users/{username}")
     fun getUser(@Path("username") username: String): Call<User>
 
-
+    @GET("users/{username}/repos")
+    fun getRepo(@Path("username") username: String): Call<List<Repository>>
 
     // peticion para obtener los seguidores del usuario
     @GET("users/{user}/followers")
