@@ -35,14 +35,15 @@
             app:layout_constraintCircle="@+id/nombreUser"
             app:layout_constraintCircleRadius="45dp"
             app:layout_constraintCircleAngle="180"
-            />
+            android:contentDescription="@string/todo"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/nombreUser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nombre de usuario"
+            android:text="@string/nombre_de_usuario"
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,7 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="0 seguidos"
+            android:text="@string/_0_seguidos"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="0 seguidores"
+            android:text="@string/_0_seguidores"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

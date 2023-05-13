@@ -2,7 +2,7 @@ package com.twelveHours.gitcraft.entidad
 
 import com.google.gson.annotations.SerializedName
 
-// clase que representa un usuario
+
 data class User(
     val User: String,
     @SerializedName("avatar_url")   val image: String,
