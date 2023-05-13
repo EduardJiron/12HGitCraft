@@ -1,5 +1,15 @@
-package com.twelveHours.gitcraft
-
+import android.annotation.SuppressLint
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,6 +29,7 @@ import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterVh
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class MainActivity : AppCompatActivity(), RepoCallback, UserCallback {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RepoAdacterVh
@@ -27,12 +38,34 @@ class MainActivity : AppCompatActivity(), RepoCallback, UserCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val githubApiService =
-            Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(GitHubServiceRequest::class.java)
+        val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)?.findNavController()
+
+        navView.setupWithNavController(navController!!)
+
+        navView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.usuarioFragment -> {
+                    navController.navigate(R.id.usuarioFragment)
+                    true
+                }
+                R.id.principalFragment -> {
+                    navController.navigate(R.id.principalFragment)
+                    true
+                }
+                R.id.nuevoFragment -> {
+                    navController.navigate(R.id.nuevoFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        val githubApiService = Retrofit.Builder()
+            .baseUrl("https://api.github.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GitHubServiceRequest::class.java)
 
         val username = "EduardJiron"
 

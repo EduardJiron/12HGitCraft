@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/principalFragment">
+
+    <fragment
+        android:id="@+id/principalFragment"
+        android:name="com.twelveHours.gitcraft.PrincipalFragment"
+        android:label="fragment_principal"
+        tools:layout="@layout/fragment_principal" />
+    <fragment
+        android:id="@+id/gestionarFragment"
+        android:name="com.twelveHours.gitcraft.GestionarFragment"
+        android:label="fragment_gestionar"
+        tools:layout="@layout/fragment_gestionar" />
+    <fragment
+        android:id="@+id/nuevoFragment"
+        android:name="com.twelveHours.gitcraft.NuevoFragment"
+        android:label="fragment_nuevo"
+        tools:layout="@layout/fragment_nuevo" />
+    <fragment
+        android:id="@+id/usuarioFragment"
+        android:name="com.twelveHours.gitcraft.UsuarioFragment"
+        android:label="fragment_usuario"
+        tools:layout="@layout/fragment_usuario" />
+</navigation>
