@@ -18,12 +18,14 @@ class GitUserView {
 
                     val user = response.body()
 
-
                     val name = user?.User ?: user?.login ?: "Unknown user"
                     val followers = user?.followers ?: "Unknown followers"
                     val following = user?.following ?: "Unknown following"
 
-                    Log.d("GithubApi", "User: $name Followers: $followers Following: $following")
+                    println("User: $name")
+                    println("Followers: $followers")
+                    println("Following: $following")
+                    println("------------------------------------")
                 } else {
                     Log.e("GithubApi", "Error: ${response.code()}")
                 }
@@ -33,6 +35,5 @@ class GitUserView {
                 Log.e("GithubApi", "Error: ${t.message}")
             }
         })
-
     }
 }
