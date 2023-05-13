@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Principal"
+        android:id="@+id/principal"
+        android:icon="@drawable/baseline_home_24"/>
+    <item android:title="Gestionar"
+        android:id="@+id/gestionar"
+        android:icon="@drawable/baseline_book_24"
+        />
+    <item android:title="Nuevo"
+        android:id="@+id/nuevo"
+        android:icon="@drawable/baseline_add_box_24"/>
+    <item android:title="Perfil"
+        android:id="@+id/perfil"
+       android:icon="@drawable/baseline_user_24"/>
+</menu>
