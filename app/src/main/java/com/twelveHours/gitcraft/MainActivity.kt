@@ -1,9 +1,15 @@
 package com.twelveHours.gitcraft
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.twelveHours.gitcraft.databinding.ActivityMainBinding
 import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.entidad.User
@@ -14,9 +20,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
+
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val navController = findNavController(R.id.fragmentContainerView)
+        bottomNavigationView.setupWithNavController(navController)
+
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -63,23 +78,35 @@ class MainActivity : AppCompatActivity() {
                     Log.e("GithubApi", "Error: ${t.message}")
                 }
             })
-            githubApiService.getStarredRepositories(username).enqueue(object : Callback<List<Repository>> {
-                override fun onResponse(call: Call<List<Repository>>, response: Response<List<Repository>>) {
-                    if (response.isSuccessful) {
-                        val followers = response.body()
-                        followers?.forEach {
-                            Log.d("GithubApi", "Favoritos: ${it.name}")
+            githubApiService.getStarredRepositories(username)
+                .enqueue(object : Callback<List<Repository>> {
+                    override fun onResponse(
+                        call: Call<List<Repository>>,
+                        response: Response<List<Repository>>
+                    ) {
+                        if (response.isSuccessful) {
+                            val followers = response.body()
+                            followers?.forEach {
+                                Log.d("GithubApi", "Favoritos: ${it.name}")
+                            }
+                        } else {
+                            Log.e("GithubApi", "Error: ${response.code()}")
                         }
-                    } else {
-                        Log.e("GithubApi", "Error: ${response.code()}")
                     }
-                }
 
-                override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
-                    Log.e("GithubApi", "Error: ${t.message}")
-                }
-            })
+                    override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
+                        Log.e("GithubApi", "Error: ${t.message}")
+                    }
+                })
         }
 
-        }
+
     }
+
+    /*private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout,fragment)
+        fragmentTransaction.commit()
+    }*/
+}
