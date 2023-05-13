@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.twelveHours.gitcraft.databinding.ActivityMainBinding
+
 import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.entidad.User
@@ -27,23 +29,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // implementacion del navController y la inclusion del id en el activity_main.xml
-
-        val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)?.findNavController()
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        val navController = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)?.findNavController()
 
-           navView.setupWithNavController(navController!!)
+        navView.setupWithNavController(navController!!)
+
+        navView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.usuarioFragment -> {
+                    navController.navigate(R.id.usuarioFragment)
+                    true
+                }
+                R.id.principalFragment -> {
+                    navController.navigate(R.id.principalFragment)
+                    true
+                }
+                R.id.nuevoFragment -> {
+                    navController.navigate(R.id.nuevoFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
 
 
-  
 
-
-    }}
-
-    /*private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout,fragment)
-        fragmentTransaction.commit()
-    }*/
+    }
 
