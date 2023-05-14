@@ -44,8 +44,11 @@ class GitRepoView {
                         if (response.isSuccessful) {
                             val repos = response.body() ?: emptyList()
 
+
                             cache[username] = repos
                             callback.onReposReceived(repos,repos.size)
+
+
                         } else {
                             callback.onError(response.code().toString())
                         }
@@ -57,4 +60,8 @@ class GitRepoView {
                 }
             )
     }
+
+
+
+
 }
