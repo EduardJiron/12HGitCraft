@@ -1,22 +1,35 @@
 package com.twelveHours.gitcraft
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.twelveHours.gitcraft.datos.GitHubServiceRequest
+import com.twelveHours.gitcraft.datos.RepoCallback
+import com.twelveHours.gitcraft.datos.UserCallback
+import com.twelveHours.gitcraft.entidad.Repository
+import com.twelveHours.gitcraft.entidad.User
+import com.twelveHours.gitcraft.negocio.GitRepoView
+import com.twelveHours.gitcraft.negocio.GitUserView
+import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterVh
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [UsuarioFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class UsuarioFragment : Fragment() {
+
+class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: RepoAdacterVh
+    private lateinit var numRepo: TextView
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -29,31 +42,70 @@ class UsuarioFragment : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val githubApiService = Retrofit.Builder()
+            .baseUrl("https://api.github.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GitHubServiceRequest::class.java)
+
+        val username = "EduardJiron"
+        val gitUserView = GitUserView()
+        gitUserView.getUser(githubApiService, username, this)
+        recyclerView = view.findViewById(R.id.recyclerView)
+       numRepo = view.findViewById(R.id.numRepo)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        val gitRepoView = GitRepoView()
+        gitRepoView.getRepoStar(githubApiService, username, this)
+
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_usuario, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UsuarioFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UsuarioFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+
+    override fun onReposReceived(repos: List<Repository>, number: Int) {
+        adapter = RepoAdacterVh(repos)
+
+
+        recyclerView.adapter = adapter
+    }
+
+    override fun onUserReceived(user: User) {
+        val imageView = view?.findViewById<ImageView>(R.id.imageUser)
+        val nombreUser = view?.findViewById<TextView>(R.id.nombreUser)
+        val seguidos = view?.findViewById<TextView>(R.id.seguidos)
+        val seguidores = view?.findViewById<TextView>(R.id.seguidores)
+        val state = view?.findViewById<TextView>(R.id.numRepo)
+
+
+
+        if (imageView != null) {
+            Glide.with(this).load(user.image).into(imageView)
+        }
+        if (nombreUser != null) {
+            nombreUser.text = user.login
+        }
+        if (seguidos != null) {
+            seguidos.text = user.following
+        }
+        if (seguidores != null) {
+            seguidores.text = user.followers
+        }
+        if (state != null) {
+            state.text = user.public_repos.toString()
+        }
+    }
+
+    override fun onError(errorMessage: String) {
+        println("Error: $errorMessage")
     }
 }

@@ -8,19 +8,23 @@ import retrofit2.http.Path
 
 interface GitHubServiceRequest {
 
-
     @GET("users/{username}")
     fun getUser(@Path("username") username: String): Call<User>
 
 
-    @GET("users/{user}/following")
-
-    fun getfollo(@Path("user") user: String): Call<List<User>>
+    @GET("users/{username}/repos")
+    fun getRepo(@Path("username") username: String): Call<List<Repository>>
 
     @GET("users/{username}/starred")
-    fun getStarredRepositories(@Path("username") username: String): Call<List<Repository>>
+    fun getStarred(@Path("username") username: String): Call<List<Repository>>
+
+    //numero de repositorios
+    @GET("users/{username}")
+    fun getNumberRepo(@Path("username") username: String): Call<User>
 
 
+    @GET("repos/{username}/{reponame}/archive/refs/heads/master.zip")
+    fun getDownload(@Path("username") username: String, @Path("reponame") reponame: String): Call<Repository>
 
 
 
