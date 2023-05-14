@@ -2,6 +2,7 @@ package com.twelveHours.gitcraft
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,6 +12,9 @@ class MainActivity : AppCompatActivity() /* RepoCallback, UserCallback*/ {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
 
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         val navController =
@@ -26,10 +30,20 @@ class MainActivity : AppCompatActivity() /* RepoCallback, UserCallback*/ {
                 }
                 R.id.principalFragment -> {
                     navController.navigate(R.id.principalFragment)
+
+
                     true
                 }
-                R.id.nuevoFragment -> {
-                    navController.navigate(R.id.nuevoFragment)
+                R.id.usuarioFragment -> {
+                    navController.navigate(R.id.usuarioFragment)
+
+
+                    true
+                }
+                R.id.gestionarFragment -> {
+                    navController.navigate(R.id.gestionarFragment)
+
+
                     true
                 }
                 else -> false

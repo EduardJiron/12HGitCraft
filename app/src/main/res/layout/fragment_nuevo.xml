@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".NuevoFragment">
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="410dp"
@@ -16,6 +18,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
+    <FrameLayout
+        android:id="@+id/containerNuevo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
     <LinearLayout
         android:orientation="horizontal"
