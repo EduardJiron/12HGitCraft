@@ -11,6 +11,7 @@ interface GitHubServiceRequest {
     @GET("users/{username}")
     fun getUser(@Path("username") username: String): Call<User>
 
+
     @GET("users/{username}/repos")
     fun getRepo(@Path("username") username: String): Call<List<Repository>>
 
@@ -20,6 +21,10 @@ interface GitHubServiceRequest {
     //numero de repositorios
     @GET("users/{username}")
     fun getNumberRepo(@Path("username") username: String): Call<User>
+
+
+    @GET("repos/{username}/{reponame}/archive/refs/heads/master.zip")
+    fun getDownload(@Path("username") username: String, @Path("reponame") reponame: String): Call<Repository>
 
 
 
