@@ -8,11 +8,21 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GitRepoView {
+    private val cache = HashMap<String, List<Repository>>()
+
     fun getRepos(
         gitHubServiceRequest: GitHubServiceRequest,
         username: String,
         callback: RepoCallback
     ) {
+
+        val cachedRepos = cache[username]
+        if (cachedRepos != null) {
+            callback.onReposReceived(cachedRepos)
+            return
+        }
+
+
         gitHubServiceRequest
             .getRepo(username)
             .enqueue(
@@ -23,6 +33,7 @@ class GitRepoView {
                     ) {
                         if (response.isSuccessful) {
                             val repos = response.body() ?: emptyList()
+                            cache[username] = repos
                             callback.onReposReceived(repos)
                         } else {
                             callback.onError(response.code().toString())

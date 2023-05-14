@@ -4,7 +4,7 @@ import com.twelveHours.gitcraft.entidad.User
 
 interface UserCallback {
 
-        fun onUserReceived(user: User)
+    fun onUserReceived(user: User)
 
-        fun onError(errorMessage: String)
+    fun onError(errorMessage: String)
 }
