@@ -74,7 +74,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
 
     override fun onReposReceived(repos: List<Repository>, number: Int) {
         adapter = RepoAdacterVh(repos)
-        numRepo.text = number.toString()
+
 
         recyclerView.adapter = adapter
     }
@@ -84,6 +84,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
         val nombreUser = view?.findViewById<TextView>(R.id.nombreUser)
         val seguidos = view?.findViewById<TextView>(R.id.seguidos)
         val seguidores = view?.findViewById<TextView>(R.id.seguidores)
+        val state = view?.findViewById<TextView>(R.id.numRepo)
 
 
 
@@ -98,6 +99,9 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
         }
         if (seguidores != null) {
             seguidores.text = user.followers
+        }
+        if (state != null) {
+            state.text = user.public_repos.toString()
         }
     }
 
