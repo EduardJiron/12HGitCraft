@@ -13,4 +13,14 @@ interface GitHubServiceRequest {
 
     @GET("users/{username}/repos")
     fun getRepo(@Path("username") username: String): Call<List<Repository>>
+
+    @GET("users/{username}/starred")
+    fun getStarred(@Path("username") username: String): Call<List<Repository>>
+
+    //numero de repositorios
+    @GET("users/{username}")
+    fun getNumberRepo(@Path("username") username: String): Call<User>
+
+
+
 }
