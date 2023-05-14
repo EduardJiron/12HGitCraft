@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/celeste2">
 
         <ImageView
             android:id="@+id/imageView7"
@@ -57,12 +58,15 @@
             android:id="@+id/editTextNuevoUsuario"
             android:layout_width="246dp"
             android:layout_height="43dp"
+            android:layout_marginBottom="36dp"
             android:ems="10"
             android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editTextNuevoPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.903"
+            app:layout_constraintHorizontal_bias="0.963"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="172dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textInfoNuevoUser"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textNuevoPassword"
@@ -81,32 +85,44 @@
             android:id="@+id/editTextNuevoPassword"
             android:layout_width="241dp"
             android:layout_height="47dp"
+            android:layout_marginTop="172dp"
             android:ems="10"
             android:inputType="textPassword"
-            tools:layout_editor_absoluteX="149dp"
-            tools:layout_editor_absoluteY="251dp" />
-
-        <TextView
-            android:id="@+id/textNuevoPassword"
-            android:layout_width="129dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="52dp"
-            android:text="Contraseña: "
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.935"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textNuevoPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/textInfoNuevoUser" />
 
         <EditText
             android:id="@+id/editTextEmail"
-            android:layout_width="241dp"
+            android:layout_width="232dp"
             android:layout_height="50dp"
+            android:layout_marginTop="40dp"
             android:ems="10"
             android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="149dp"
-            tools:layout_editor_absoluteY="340dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNuevoPassword"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textNuevoEmail"
+            android:layout_width="129dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="40dp"
+            android:text="Email: "
+            android:textAlignment="center"
+
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editTextEmail"
+            app:layout_constraintHorizontal_bias="0.028"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNuevoPassword"
+            app:layout_constraintVertical_bias="0.018" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
