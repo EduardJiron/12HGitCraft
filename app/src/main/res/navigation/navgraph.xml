@@ -34,9 +34,18 @@
         android:id="@+id/containerFragment"
         android:name="com.twelveHours.gitcraft.ContainerFragment"
         android:label="fragment_container"
-        tools:layout="@layout/fragment_container" >
+        tools:layout="@layout/fragment_container">
         <action
             android:id="@+id/action_containerFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.twelveHours.gitcraft.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/loginL"
             app:destination="@id/mainActivity" />
     </fragment>
 </navigation>

@@ -5,17 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.twelveHours.gitcraft.datos.GitHubServiceRequest
+import com.twelveHours.gitcraft.negocio.GitRepoView
+import com.twelveHours.gitcraft.negocio.GitUserView
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ContainerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class ContainerFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -26,27 +30,59 @@ class ContainerFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val navView: BottomNavigationView = view.findViewById(R.id.bottomNavigationView)
+        val navController =
+            childFragmentManager.findFragmentById(R.id.fragmentContainerView)?.findNavController()
+
+        navView.setupWithNavController(navController!!)
+
+        navView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.usuarioFragment -> {
+                    navController.navigate(R.id.usuarioFragment)
+                    true
+                }
+                R.id.principalFragment -> {
+                    navController.navigate(R.id.principalFragment)
+
+
+                    true
+                }
+                R.id.nuevoFragment -> {
+                    navController.navigate(R.id.nuevoFragment)
+
+
+                    true
+                }
+                R.id.gestionarFragment -> {
+                    navController.navigate(R.id.gestionarFragment)
+
+
+                    true
+                }
+                else -> false
+            }
+        }
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_container, container, false)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ContainerFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ContainerFragment().apply {

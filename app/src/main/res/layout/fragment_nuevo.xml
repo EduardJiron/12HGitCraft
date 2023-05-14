@@ -1,11 +1,9 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NuevoFragment">
-
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -18,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
+
     <FrameLayout
         android:id="@+id/containerNuevo"
         android:layout_width="match_parent"
@@ -25,22 +24,21 @@
 
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageUser"
             android:layout_width="90dp"
             android:layout_height="90dp"
             app:layout_constraintCircle="@+id/nombreUser"
-            app:layout_constraintCircleRadius="45dp"
             app:layout_constraintCircleAngle="180"
+            app:layout_constraintCircleRadius="45dp"
 
             tools:ignore="ContentDescription" />
 
@@ -81,8 +79,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/imageUser"
             app:layout_constraintStart_toEndOf="@+id/seguidos"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
 
