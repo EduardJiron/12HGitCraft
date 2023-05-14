@@ -28,6 +28,7 @@ private const val ARG_PARAM2 = "param2"
 class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RepoAdacterVh
+    private lateinit var numRepo: TextView
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -53,9 +54,10 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
         val gitUserView = GitUserView()
         gitUserView.getUser(githubApiService, username, this)
         recyclerView = view.findViewById(R.id.recyclerView)
+       numRepo = view.findViewById(R.id.numRepo)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
-        gitRepoView.getRepos(githubApiService, username, this)
+        gitRepoView.getRepoStar(githubApiService, username, this)
 
 
     }
@@ -70,8 +72,10 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
 
 
 
-    override fun onReposReceived(repos: List<Repository>) {
+    override fun onReposReceived(repos: List<Repository>, number: Int) {
         adapter = RepoAdacterVh(repos)
+        numRepo.text = number.toString()
+
         recyclerView.adapter = adapter
     }
 

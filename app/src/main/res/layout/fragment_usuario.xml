@@ -76,7 +76,23 @@
             app:layout_constraintStart_toEndOf="@+id/seguidos"
             app:layout_constraintTop_toTopOf="parent"
             />
+        <TextView
+            android:id="@+id/numRepo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageUser"
+            app:layout_constraintStart_toEndOf="@+id/seguidos"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
 
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

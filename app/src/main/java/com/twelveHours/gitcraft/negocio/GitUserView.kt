@@ -11,16 +11,24 @@ class GitUserView {
     private val cache = HashMap<String, User>()
 
     fun getUser(
-        gitHubServiceRequest: GitHubServiceRequest, username: String, callback: UserCallback
-    ) {
+        gitHubServiceRequest: GitHubServiceRequest,
+        username: String,
+        callback: UserCallback
+    )
+    {
         val cachedUser = cache[username]
+
         if (cachedUser != null) {
             callback.onUserReceived(cachedUser)
             return
         }
 
-        gitHubServiceRequest.getUser(username).enqueue(object : Callback<User> {
+        gitHubServiceRequest.getUser(username)
+            .enqueue(
+            object : Callback<User> {
+
                 override fun onResponse(call: Call<User>, response: Response<User>) {
+
                     if (response.isSuccessful) {
                         val user = response.body()
 
@@ -38,6 +46,7 @@ class GitUserView {
                 override fun onFailure(call: Call<User>, t: Throwable) {
                     callback.onError("Error: ${t.message}")
                 }
-            })
+            }
+        )
     }
 }
