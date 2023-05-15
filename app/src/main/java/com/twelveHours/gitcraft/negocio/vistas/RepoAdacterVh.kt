@@ -9,14 +9,23 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.twelveHours.gitcraft.R
+import com.twelveHours.gitcraft.databinding.ItemrepositoryBinding
 import com.twelveHours.gitcraft.entidad.Repository
+import com.twelveHours.gitcraft.negocio.RepoDelete
 import com.twelveHours.gitcraft.negocio.UserName
 
-class RepoAdacterVh(private val repository:List<Repository>): RecyclerView.Adapter<RepoAdacterVh.ViewHolder>( ) {
+class RepoAdacterVh(
+    private var repository: List<Repository>,
+    private val btn: com.twelveHours.gitcraft.datos.ButtonClick
+) : RecyclerView.Adapter<RepoAdacterVh.ViewHolder>() {
+
+    fun updateData(newRepos: List<Repository>) {
+        repository = newRepos
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.itemrepository, parent, false)
-        return ViewHolder(view)
+        val binding = ItemrepositoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding, btn)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,24 +36,19 @@ class RepoAdacterVh(private val repository:List<Repository>): RecyclerView.Adapt
         return repository.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(
+        private val binding: ItemrepositoryBinding,
+        private val btn: com.twelveHours.gitcraft.datos.ButtonClick
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(repository: Repository) {
+            val usuario = UserName().getUserName()
+            binding.tvNombre.text = repository.name
+            binding.tvDescripcion.text = repository.description ?: "No hay descripcion"
+            binding.tvLenguaje.text = repository.language ?: "lenguaje no identificado"
+            binding.tvFecha.text = repository.created_at.substring(0, 10).replace("-", "/")
 
-         val textViewNombre = itemView.findViewById<TextView>(R.id.tvNombre)
-            val textViewDescripcion = itemView.findViewById<TextView>(R.id.tvDescripcion)
-            val textViewLenguaje = itemView.findViewById<TextView>(R.id.tvLenguaje)
-            val textViewFecha = itemView.findViewById<TextView>(R.id.tvFecha)
-            val usuario= UserName().getUserName()
-            textViewNombre.text = repository.name
-            textViewDescripcion.text = repository.description?: "No hay descripcion"
-            textViewLenguaje.text = repository.language?: "lenguaje no identificado"
-            textViewFecha.text = repository.created_at.substring(0,10).replace("-","/")
-
-
-
-            textViewNombre.setOnClickListener(){
-
-
+            binding.tvNombre.setOnClickListener {
                 val clipboard = it.context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
                 val clip = android.content.ClipData.newPlainText("Copied Text", repository.clone_url)
                 clipboard.setPrimaryClip(clip)
@@ -53,15 +57,15 @@ class RepoAdacterVh(private val repository:List<Repository>): RecyclerView.Adapt
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/${usuario}/${repository.name}/archive/refs/heads/master.zip\n"))
                 it.context.startActivity(intent)
-
-
-
-
             }
 
+            binding.button4.setOnClickListener {
+                val repoDe = RepoDelete()
+                repoDe.deleteRepository(usuario, repository.name)
+                btn.onUpdate()
 
+                Toast.makeText(it.context, "Repositorio eliminado", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
 }

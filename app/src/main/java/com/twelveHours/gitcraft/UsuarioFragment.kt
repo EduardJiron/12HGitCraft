@@ -50,7 +50,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-        val username = "EduardJiron"
+        val username = "12HDeveloper"
         val gitUserView = GitUserView()
         gitUserView.getUser(githubApiService, username, this)
         recyclerView = view.findViewById(R.id.recyclerView)
@@ -73,7 +73,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
 
 
     override fun onReposReceived(repos: List<Repository>, number: Int) {
-        adapter = RepoAdacterVh(repos)
+
 
 
         recyclerView.adapter = adapter

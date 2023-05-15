@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bacAzul">#001E2C</color>
+    <color name="bacAzulClaro">#002B3B</color>
+    <color name="bacAzulClaro2">#003D52</color>
 </resources>
