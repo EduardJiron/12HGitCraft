@@ -10,5 +10,9 @@
     <string name="nombre_de_usuario">Nombre de usuario</string>
     <string name="_0_seguidos">0 seguidos</string>
     <string name="bacAzul">bacAzul</string>
+    <string name="nombre">nombre</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="lenguaje">Lenguaje</string>
+    <string name="fecha">Fecha</string>
 
 </resources>

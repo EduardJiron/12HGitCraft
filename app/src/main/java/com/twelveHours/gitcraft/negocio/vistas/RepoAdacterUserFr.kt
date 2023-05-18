@@ -9,24 +9,26 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.twelveHours.gitcraft.R
-import com.twelveHours.gitcraft.databinding.ItemrepositoryBinding
+import com.twelveHours.gitcraft.databinding.ItemuserrepoBinding
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.negocio.RepoDelete
 import com.twelveHours.gitcraft.negocio.UserName
 
-class RepoAdacterVh(
+class RepoAdacterUserFr(
     private var repository: List<Repository>,
     private val btn: com.twelveHours.gitcraft.datos.ButtonClick
-) : RecyclerView.Adapter<RepoAdacterVh.ViewHolder>() {
+) : RecyclerView.Adapter<RepoAdacterUserFr.ViewHolder>() {
 
     fun updateData(newRepos: List<Repository>) {
         repository = newRepos
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemrepositoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemuserrepoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding, btn)
     }
+
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(repository[position])
@@ -37,7 +39,7 @@ class RepoAdacterVh(
     }
 
     class ViewHolder(
-        private val binding: ItemrepositoryBinding,
+        private val binding: ItemuserrepoBinding,
         private val btn: com.twelveHours.gitcraft.datos.ButtonClick
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -49,21 +51,16 @@ class RepoAdacterVh(
             binding.tvFecha.text = repository.created_at.substring(0, 10).replace("-", "/")
 
             binding.tvNombre.setOnClickListener {
+                val clipboard = it.context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                val clip = android.content.ClipData.newPlainText("Copied Text", repository.clone_url)
+                clipboard.setPrimaryClip(clip)
 
-
-
+                Toast.makeText(it.context, "Url copiado al portapapeles", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/${usuario}/${repository.name}/archive/refs/heads/master.zip\n"))
                 it.context.startActivity(intent)
             }
 
-            binding.button4.setOnClickListener {
-                val repoDe = RepoDelete()
-                repoDe.deleteRepository(usuario, repository.name)
-                btn.onUpdate()
-
-                Toast.makeText(it.context, "Repositorio eliminado", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 }

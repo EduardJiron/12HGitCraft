@@ -29,8 +29,6 @@ class NuevoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val text: TextView = view.findViewById(R.id.nombreUser)
-        text.text = "Hello"
     }
 
     override fun onCreateView(

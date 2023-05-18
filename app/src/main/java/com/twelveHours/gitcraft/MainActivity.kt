@@ -2,9 +2,10 @@ package com.twelveHours.gitcraft
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.twelveHours.gitcraft.datos.ButtonClick
 
 
-class MainActivity : AppCompatActivity() /* RepoCallback, UserCallback*/ {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() /* RepoCallback, UserCallback*/ {
 
 
     }
+
+
 
 
 }

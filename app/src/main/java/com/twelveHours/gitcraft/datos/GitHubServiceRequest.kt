@@ -3,6 +3,7 @@ package com.twelveHours.gitcraft.datos
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.entidad.User
 import retrofit2.Call
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -21,10 +22,15 @@ interface GitHubServiceRequest {
     //numero de repositorios
     @GET("users/{username}")
     fun getNumberRepo(@Path("username") username: String): Call<User>
+    @DELETE("repos/{owner}/{repoName}")
+    fun deleteRepository(
+        @Path("owner") owner: String,
+        @Path("repoName") repoName: String
+    ): Call<Void>
 
 
-    @GET("repos/{username}/{reponame}/archive/refs/heads/master.zip")
-    fun getDownload(@Path("username") username: String, @Path("reponame") reponame: String): Call<Repository>
+
+
 
 
 

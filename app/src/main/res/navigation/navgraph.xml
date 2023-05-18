@@ -48,4 +48,8 @@
             android:id="@+id/loginL"
             app:destination="@id/mainActivity" />
     </fragment>
+    <fragment
+        android:id="@+id/agregarRepoFragment"
+        android:name="com.twelveHours.gitcraft.AgregarRepoFragment"
+        android:label="AgregarRepoFragment" />
 </navigation>

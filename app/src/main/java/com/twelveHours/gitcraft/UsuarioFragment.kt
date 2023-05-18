@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.twelveHours.gitcraft.datos.ButtonClick
 import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import com.twelveHours.gitcraft.datos.RepoCallback
 import com.twelveHours.gitcraft.datos.UserCallback
@@ -16,6 +17,7 @@ import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.entidad.User
 import com.twelveHours.gitcraft.negocio.GitRepoView
 import com.twelveHours.gitcraft.negocio.GitUserView
+import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterUserFr
 import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterVh
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,9 +27,9 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
+class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: RepoAdacterVh
+    private lateinit var adapter: RepoAdacterUserFr
     private lateinit var numRepo: TextView
 
     // TODO: Rename and change types of parameters
@@ -50,10 +52,10 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-        val username = "EduardJiron"
+        val username = "12HDeveloper"
         val gitUserView = GitUserView()
         gitUserView.getUser(githubApiService, username, this)
-        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView = view.findViewById(R.id.recyclerView2)
        numRepo = view.findViewById(R.id.numRepo)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
@@ -73,10 +75,10 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
 
 
     override fun onReposReceived(repos: List<Repository>, number: Int) {
-        adapter = RepoAdacterVh(repos)
 
-
+        adapter = RepoAdacterUserFr(repos, this)
         recyclerView.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
     override fun onUserReceived(user: User) {
@@ -107,5 +109,9 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback {
 
     override fun onError(errorMessage: String) {
         println("Error: $errorMessage")
+    }
+
+    override fun onUpdate() {
+
     }
 }
