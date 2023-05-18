@@ -49,11 +49,9 @@ class RepoAdacterVh(
             binding.tvFecha.text = repository.created_at.substring(0, 10).replace("-", "/")
 
             binding.tvNombre.setOnClickListener {
-                val clipboard = it.context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-                val clip = android.content.ClipData.newPlainText("Copied Text", repository.clone_url)
-                clipboard.setPrimaryClip(clip)
 
-                Toast.makeText(it.context, "Url copiado al portapapeles", Toast.LENGTH_SHORT).show()
+
+
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/${usuario}/${repository.name}/archive/refs/heads/master.zip\n"))
                 it.context.startActivity(intent)

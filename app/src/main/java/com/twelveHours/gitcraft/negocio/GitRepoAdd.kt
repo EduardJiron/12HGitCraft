@@ -5,7 +5,7 @@ import com.github.kittinunf.fuel.core.isSuccessful
 import org.json.JSONObject
 
 class GitRepoAdd {
-    private val AUTH_TOKEN = "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"
+    private val AUTH_TOKEN = "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"
 
 
     fun crearRepositorio(nombre:String,descripcion:String) {
