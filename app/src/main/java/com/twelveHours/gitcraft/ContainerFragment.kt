@@ -6,13 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.twelveHours.gitcraft.datos.GitHubServiceRequest
-import com.twelveHours.gitcraft.negocio.GitRepoView
-import com.twelveHours.gitcraft.negocio.GitUserView
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
 
 
 private const val ARG_PARAM1 = "param1"

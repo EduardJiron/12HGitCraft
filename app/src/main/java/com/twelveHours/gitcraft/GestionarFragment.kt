@@ -67,8 +67,8 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick {
         val gitRepoView = GitRepoView()
         gitRepoView.getRepoStar(githubApiService, username, this)
 
-        // Inicia la actualización del RecyclerView cada 5 segundos
-        handler.postDelayed(updateRecyclerViewTask, 1000)
+
+        handler.postDelayed(updateRecyclerViewTask, 200000)
     }
 
     override fun onCreateView(
