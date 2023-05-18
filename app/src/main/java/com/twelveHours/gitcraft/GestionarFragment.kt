@@ -25,8 +25,7 @@ private const val ARG_PARAM2 = "param2"
 class GestionarFragment : Fragment(), RepoCallback, ButtonClick {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RepoAdacterVh
-    private lateinit var numRepo: TextView
-    private lateinit var button: Button
+    private lateinit var btnAdd: Button
     private lateinit var textView: TextView
     private val handler = Handler()
     private val updateRecyclerViewTask = object : Runnable {
@@ -66,6 +65,15 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick {
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
         gitRepoView.getRepoStar(githubApiService, username, this)
+
+        btnAdd = view.findViewById(R.id.btnAdd)
+        btnAdd.setOnClickListener {
+            val fragment = AgregarRepoFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
 
         handler.postDelayed(updateRecyclerViewTask, 200000)

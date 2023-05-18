@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RepoDelete {
     private val BASE_URL = "https://api.github.com/"
-    private val AUTH_TOKEN = "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"
+    private val AUTH_TOKEN = "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"
     private val githubService: GitHubServiceRequest
 
     init {8
@@ -37,15 +37,11 @@ class RepoDelete {
         val call = githubService.deleteRepository(owner, repoName)
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: retrofit2.Response<Void>) {
-                if (response.isSuccessful) {
-                    // El repositorio se borró exitosamente
-                } else {
-                    // Manejar la respuesta de error
-                }
+
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                // Manejar el error de la solicitud
+
             }
         })
     }
