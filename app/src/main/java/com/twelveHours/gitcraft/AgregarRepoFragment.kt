@@ -1,5 +1,6 @@
 package com.twelveHours.gitcraft
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -51,9 +52,23 @@ class AgregarRepoFragment : Fragment() {
             val nombre = binding.txtNombre.text.toString()
             val descripcion = binding.txtDesc.text.toString()
 
-            gitRepoAdd.crearRepositorio(nombre, descripcion)
 
-            Toast.makeText(context, "Repositorio creado", Toast.LENGTH_SHORT).show()
+
+            AlertDialog.Builder(binding.root.context)
+                .setTitle("Agregar repositorio")
+                .setMessage("¿Estás seguro de crear el repositorio?")
+                .setPositiveButton("si") { _, _ ->
+                    gitRepoAdd.crearRepositorio(nombre, descripcion)
+
+                    Toast.makeText(context, "Repositorio creado", Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton("no") { dialog, _ ->
+                    dialog.dismiss()
+                    Toast.makeText(binding.root.context, "No se creó", Toast.LENGTH_SHORT).show()
+                }
+                .show()
+
+
         }
 
     }

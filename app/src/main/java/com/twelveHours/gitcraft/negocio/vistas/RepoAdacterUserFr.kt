@@ -19,9 +19,7 @@ class RepoAdacterUserFr(
     private val btn: com.twelveHours.gitcraft.datos.ButtonClick
 ) : RecyclerView.Adapter<RepoAdacterUserFr.ViewHolder>() {
 
-    fun updateData(newRepos: List<Repository>) {
-        repository = newRepos
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemuserrepoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
