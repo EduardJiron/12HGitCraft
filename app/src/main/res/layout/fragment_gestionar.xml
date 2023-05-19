@@ -6,11 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bacAzul"
+    android:background="#001E2C"
     android:backgroundTint="#001E2C"
     tools:context=".GestionarFragment"
     tools:ignore="ExtraText">
-
 
 
         <LinearLayout
@@ -19,7 +18,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"   />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -67,7 +66,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="80dp"
             android:layout_marginRight="20dp"
-
 
 
             android:layout_marginBottom="20dp"

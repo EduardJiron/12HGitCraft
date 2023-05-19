@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.twelveHours.gitcraft.R
 import com.twelveHours.gitcraft.datos.ButtonClick
+import com.twelveHours.gitcraft.datos.FragmentChange
 import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import com.twelveHours.gitcraft.datos.RepoCallback
 import com.twelveHours.gitcraft.entidad.Repository
@@ -22,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class GestionarFragment : Fragment(), RepoCallback, ButtonClick {
+class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RepoAdacterVh
     private lateinit var btnAdd: Button
@@ -86,7 +87,7 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick {
     }
 
     override fun onReposReceived(repos: List<Repository>, number: Int) {
-        adapter = RepoAdacterVh(repos, this)
+        adapter = RepoAdacterVh(repos, this,this)
         textView = view?.findViewById(R.id.repositorios) ?: TextView(context)
         recyclerView.adapter = adapter
     }
@@ -121,8 +122,19 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick {
     }
 
     private fun refreshRecyclerView(repos: List<Repository>) {
-        adapter = RepoAdacterVh(repos, this)
+        adapter = RepoAdacterVh(repos, this,this)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
+    }
+
+    override fun openContainerFragment() {
+
+
+        val fragment = EditarRepoFragment()
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+
+        transaction.replace(R.id.fragmentContainerView, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
