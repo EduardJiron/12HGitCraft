@@ -1,3 +1,3 @@
 # 12HGitCraft
 
-Avance del proyecto 60%
+Avance del proyecto 65%
