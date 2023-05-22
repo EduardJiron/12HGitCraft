@@ -85,19 +85,6 @@
             app:layout_constraintTop_toTopOf="@+id/imageView2"
             app:layout_constraintVertical_bias="0.362" />
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="146dp"
-            android:layout_height="157dp"
-            android:rotation="6"
-            android:src="@drawable/pala"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.977"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.191" />
-
         <EditText
             android:id="@+id/editTextUsuario"
             android:layout_width="302dp"
