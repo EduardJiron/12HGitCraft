@@ -15,6 +15,8 @@
         android:id="@+id/textInfoNuevoRepo"
         android:layout_width="363dp"
         android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/freesansbold"
         android:text="Crea tu repositorio "
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -24,29 +26,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.030" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="301dp"
         android:layout_height="57dp"
-
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="206dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/edit_text_rounded"
+        android:fontFamily="@font/freesansbold"
         android:hint="Nombre"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/txtDesc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintHorizontal_bias="0.386"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/txtDesc"
@@ -54,38 +57,50 @@
         android:layout_height="57dp"
         android:layout_below="@+id/txtNombre"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginBottom="320dp"
         android:background="@drawable/edit_text_rounded"
+        android:fontFamily="@font/freesansbold"
         android:hint="Descripción"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnAgregar"
-        android:layout_width="301dp"
-        android:layout_height="52dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/txtDesc"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginBottom="318dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="216dp"
         android:background="@drawable/button_rounded"
+        android:fontFamily="@font/freesansbold"
         android:text="Agregar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDesc"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txtDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/button_rounded"
+        android:fontFamily="@font/freesansbold"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDesc"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

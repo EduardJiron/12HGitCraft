@@ -14,6 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="12dp"
         android:text="@string/Nombre"
+        android:fontFamily="@font/freesansbold"
         android:textColor="#c9d1d9"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/Descripcion"
+        android:fontFamily="@font/freesansbold"
         android:textColor="#c9d1d9"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/tvNombre"
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/Lenguaje"
+        android:fontFamily="@font/freesansbold"
         android:textColor="#c9d1d9"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/tvDescripcion"
@@ -54,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/Fecha"
+        android:fontFamily="@font/freesansbold"
         android:textColor="#c9d1d9"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/tvLenguaje"
@@ -67,9 +71,10 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="#c9d1d9"
-        app:layout_constraintTop_toBottomOf="@+id/tvFecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
