@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CuentaCraftFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bacAzul">
+
+        <TextView
+            android:id="@+id/textInfoNuevaCuenta"
+            android:layout_width="363dp"
+            android:layout_height="40dp"
+            android:text="Crea tu cuenta GitCraft "
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.042" />
+
+        <EditText
+            android:id="@+id/txtNombreGraft"
+            android:layout_width="301dp"
+            android:layout_height="57dp"
+            android:ems="15"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="206dp"
+            android:background="@drawable/edit_text_rounded"
+            android:hint="Nombre de usario"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.386"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInfoNuevaCuenta" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="301dp"
+            android:layout_height="57dp"
+            android:background="@drawable/edit_text_rounded"
+            android:ems="15"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.527"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombreGraft"
+            app:layout_constraintVertical_bias="0.133" />
+
+        <Button
+            android:id="@+id/btnAgregarGraft"
+            android:layout_width="128dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="84dp"
+            android:background="@drawable/button_rounded"
+            android:backgroundTint="@android:color/white"
+            android:stateListAnimator="@null"
+            android:text="Iniciar"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnCancGraft"
+            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+            app:layout_constraintVertical_bias="0.304" />
+
+        <Button
+            android:id="@+id/btnCancGraft"
+            android:layout_width="128dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="52dp"
+            android:background="@drawable/button_rounded"
+            android:backgroundTint="@android:color/white"
+            android:stateListAnimator="@null"
+            android:text="Cancelar"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
+            app:layout_constraintVertical_bias="0.46" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
