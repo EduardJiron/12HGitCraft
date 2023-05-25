@@ -9,6 +9,8 @@ data class User(
     val public_repos: String,
     val followers: String,
     val following: String,
-
-
 )
+
+
+
+

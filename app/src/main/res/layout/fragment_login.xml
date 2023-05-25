@@ -15,7 +15,7 @@
             android:id="@+id/textInfoNuevoUser"
             android:layout_width="363dp"
             android:layout_height="40dp"
-            android:text="Bienvenidos a GitCraf "
+            android:text="Bienvenidos a GitCraft"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25sp"
