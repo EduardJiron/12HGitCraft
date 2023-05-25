@@ -35,20 +35,19 @@
 
     <TextView
         android:id="@+id/nombreUser"
-        android:layout_width="139dp"
-        android:layout_height="25dp"
-        android:layout_marginEnd="136dp"
-        android:layout_weight="1"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="100dp"
         android:background="@drawable/edit_text_rounded"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageUser"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.047" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -67,8 +66,8 @@
 
         <ImageView
             android:id="@+id/imageRepo"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
             android:layout_marginStart="20dp"
             android:background="@drawable/repositorios"
             android:stateListAnimator="@null"
@@ -126,7 +125,7 @@
             android:layout_width="35dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/seguidores"
+            android:background="@drawable/thumb"
             android:stateListAnimator="@null"
             app:layout_constraintBottom_toBottomOf="40dp"
             app:layout_constraintCircleRadius="45dp"
