@@ -47,9 +47,17 @@
         <action
             android:id="@+id/loginL"
             app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_loginFragment_to_cuentaCraftFragment"
+            app:destination="@id/cuentaCraftFragment" />
     </fragment>
     <fragment
         android:id="@+id/agregarRepoFragment"
         android:name="com.twelveHours.gitcraft.AgregarRepoFragment"
         android:label="AgregarRepoFragment" />
+    <fragment
+        android:id="@+id/cuentaCraftFragment"
+        android:name="com.twelveHours.gitcraft.CuentaCraftFragment"
+        android:label="fragment_cuenta_craft"
+        tools:layout="@layout/fragment_cuenta_craft" />
 </navigation>

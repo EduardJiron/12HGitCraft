@@ -5,6 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.room.Room
+import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
+import com.twelveHours.gitcraft.entidad.UsuarioLogin
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +33,42 @@ class CuentaCraftFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+    }
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val usuarioCraft : EditText = view.findViewById(R.id.txtNombreGraft)
+        val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
+        val btnAgregar: Button = view.findViewById(R.id.btnAgregarGraft)
+
+        val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
+
+        val dao = room.usuarioLoginDao()
+
+
+        btnAgregar.setOnClickListener {
+
+            try {
+
+               if(usuarioCraft.text.toString().isEmpty() || passwordCraft.text.toString().isEmpty()) {
+                       Toast.makeText(requireContext(), "Llene todos los campos", Toast.LENGTH_SHORT).show()
+                   }else{
+                   dao.insertarReg(usuarioLogin = UsuarioLogin(usuario = usuarioCraft.text.toString(),password = passwordCraft.text.toString()))
+                   Toast.makeText(requireContext(), "Su usuario fue creado correctamente!", Toast.LENGTH_LONG).show()
+
+
+               }
+           }
+           catch (e: Exception){
+               Toast.makeText(requireContext(), "Error al iniciar sesión, verifique su usuario y contraseña", Toast.LENGTH_LONG).show()
+           }
+
+        }
+
     }
 
     override fun onCreateView(
@@ -56,4 +98,6 @@ class CuentaCraftFragment : Fragment() {
                 }
             }
     }
+
+
 }

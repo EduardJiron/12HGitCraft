@@ -6,6 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.room.Room
+import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
+import com.twelveHours.gitcraft.entidad.UsuarioLogin
+import androidx.navigation.fragment.findNavController
+
 
 
 private const val ARG_PARAM1 = "param1"
@@ -30,13 +39,24 @@ class LoginFragment() : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
+        //val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
+        //val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
         val text: Button = view.findViewById(R.id.btnInicar)
+        val nuevaCuenta : TextView = view.findViewById(R.id.textNuevoInfo)
+
+
         text.setOnClickListener {
             val fragment = ContainerFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainerView, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
+
+        }
+
+        nuevaCuenta.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.action_loginFragment_to_cuentaCraftFragment)
         }
 
 
