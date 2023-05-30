@@ -14,5 +14,6 @@
     <string name="Descripcion">Descripcion</string>
     <string name="Lenguaje">Lenguaje</string>
     <string name="Fecha">Fecha</string>
+    <string name="Datos">¡Por favor llene los siguientes campos para crear su cuenta!</string>
 
 </resources>

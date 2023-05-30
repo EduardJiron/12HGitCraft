@@ -55,8 +55,11 @@ class LoginFragment() : Fragment() {
         }
 
         nuevaCuenta.setOnClickListener {
-            val navController = findNavController()
-            navController.navigate(R.id.action_loginFragment_to_cuentaCraftFragment)
+            val fragment = CuentaCraftFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
 

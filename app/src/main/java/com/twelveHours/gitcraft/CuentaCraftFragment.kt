@@ -45,29 +45,12 @@ class CuentaCraftFragment : Fragment() {
         val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
         val btnAgregar: Button = view.findViewById(R.id.btnAgregarGraft)
 
-        val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
+        //val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
 
-        val dao = room.usuarioLoginDao()
-
-
-        btnAgregar.setOnClickListener {
-
-            try {
-
-               if(usuarioCraft.text.toString().isEmpty() || passwordCraft.text.toString().isEmpty()) {
-                       Toast.makeText(requireContext(), "Llene todos los campos", Toast.LENGTH_SHORT).show()
-                   }else{
-                   dao.insertarReg(usuarioLogin = UsuarioLogin(usuario = usuarioCraft.text.toString(),password = passwordCraft.text.toString()))
-                   Toast.makeText(requireContext(), "Su usuario fue creado correctamente!", Toast.LENGTH_LONG).show()
+       // val dao = room.usuarioLoginDao()
 
 
-               }
-           }
-           catch (e: Exception){
-               Toast.makeText(requireContext(), "Error al iniciar sesión, verifique su usuario y contraseña", Toast.LENGTH_LONG).show()
-           }
 
-        }
 
     }
 

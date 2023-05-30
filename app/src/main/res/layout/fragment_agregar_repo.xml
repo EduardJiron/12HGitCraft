@@ -15,8 +15,7 @@
         android:id="@+id/textInfoNuevoRepo"
         android:layout_width="363dp"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/freesansbold"
+        android:fontFamily="@font/nunito_extrabold"
         android:text="Crea tu repositorio "
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -24,9 +23,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.084" />
 
     <EditText
         android:id="@+id/txtNombre"
@@ -35,11 +35,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="206dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/edit_text_rounded"
-        android:fontFamily="@font/freesansbold"
+        android:background="@drawable/edit_text"
+        android:fontFamily="@font/nunito"
         android:hint="Nombre"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -57,9 +57,9 @@
         android:layout_height="57dp"
         android:layout_below="@+id/txtNombre"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="320dp"
-        android:background="@drawable/edit_text_rounded"
-        android:fontFamily="@font/freesansbold"
+        android:layout_marginBottom="332dp"
+        android:background="@drawable/edit_text"
+        android:fontFamily="@font/nunito"
         android:hint="Descripción"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -70,13 +70,13 @@
 
     <Button
         android:id="@+id/btnAgregar"
-        android:layout_width="128dp"
+        android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_below="@+id/txtDesc"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="60dp"
         android:layout_marginTop="7dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/button_rounded"
         android:fontFamily="@font/freesansbold"
         android:text="Agregar"
@@ -85,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDesc"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.893" />
 
     <Button
         android:id="@+id/btnCancelar"
@@ -93,15 +93,27 @@
         android:layout_height="50dp"
         android:layout_below="@+id/txtDesc"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/button_rounded"
         android:fontFamily="@font/freesansbold"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDesc"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.9" />
+
+    <ImageView
+        android:id="@+id/imageViewRepo"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:src="@drawable/baseline_book_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
