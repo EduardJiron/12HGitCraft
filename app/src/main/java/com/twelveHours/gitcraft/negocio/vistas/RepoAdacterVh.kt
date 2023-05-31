@@ -14,6 +14,7 @@ import com.twelveHours.gitcraft.databinding.ItemrepositoryBinding
 import com.twelveHours.gitcraft.datos.FragmentChange
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.negocio.RepoDelete
+import com.twelveHours.gitcraft.negocio.RepoUpdate
 import com.twelveHours.gitcraft.negocio.UserName
 
 class RepoAdacterVh(
@@ -65,6 +66,7 @@ class RepoAdacterVh(
             }
 
             binding.button5.setOnClickListener(){
+                RepoUpdate.setUserName(repository.name)
                 fragmentChange.openContainerFragment()
             }
 
