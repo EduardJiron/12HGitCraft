@@ -11,56 +11,109 @@
     tools:context=".GestionarFragment"
     tools:ignore="ExtraText">
 
+    <TextView
+        android:id="@+id/textInfoNuevoRepo"
+        android:layout_width="363dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="Crea tu repositorio "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.084" />
 
     <EditText
         android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="301dp"
+        android:layout_height="57dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="206dp"
-        android:layout_marginBottom="48dp"
-        android:hint="Name"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/edit_text"
+        android:fontFamily="@font/nunito"
+        android:hint="Nombre"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/txtDesc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.386"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/txtDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="301dp"
+        android:layout_height="57dp"
         android:layout_below="@+id/txtNombre"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginBottom="67dp"
-        android:hint="Description"
-        app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
+        android:layout_marginBottom="332dp"
+        android:background="@drawable/edit_text"
+        android:fontFamily="@font/nunito"
+        android:hint="Descripción"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnAgregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/txtDesc"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="7dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginBottom="318dp"
-        android:text="Add"
+        android:layout_marginBottom="180dp"
+        android:background="@drawable/button_rounded"
+        android:fontFamily="@font/freesansbold"
+        android:text="Agregar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDesc"
+        app:layout_constraintVertical_bias="0.893" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txtDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="180dp"
+        android:background="@drawable/button_rounded"
+        android:fontFamily="@font/freesansbold"
+        android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDesc"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <ImageView
+        android:id="@+id/imageViewRepo"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:src="@drawable/baseline_book_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

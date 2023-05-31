@@ -4,11 +4,11 @@
 
     <item android:title="Principal"
         android:id="@+id/principalFragment"
+
         android:icon="@drawable/baseline_home_24"/>
     <item android:title="Gestionar"
         android:id="@+id/gestionarFragment"
-        android:icon="@drawable/baseline_book_24"
-        />
+        android:icon="@drawable/baseline_book_24"/>
     <item android:title="Nuevo"
         android:id="@+id/nuevoFragment"
         android:icon="@drawable/baseline_add_box_24"/>

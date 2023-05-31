@@ -18,14 +18,10 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/navgraph" />
 
-
-
-
     <include
 
         layout="@layout/botton_navigation"
 
         />
-
 
 </FrameLayout>

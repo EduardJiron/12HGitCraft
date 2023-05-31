@@ -12,78 +12,81 @@
     tools:ignore="ExtraText">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"   />
 
 
-        <TextView
-            android:id="@+id/repositorios"
-            android:layout_width="127dp"
+    <TextView
+        android:id="@+id/repositorios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Repositorios"
+        android:fontFamily="@font/nunito_extrabold"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            android:layout_height="23dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Repositorios"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold"
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/agregar"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/repositorios"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.058"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cardView"
+        android:layout_width="374dp"
+        android:layout_height="580dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/repositorios"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_goneMarginBottom="5dp"
+        card_view:cardCornerRadius="20dp"
+        card_view:cardElevation="10dp"
+        card_view:cardUseCompatPadding="true"
+        tools:ignore="MissingConstraints" />
 
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.19" />
-
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="72dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/edit_text_rounded"
-            android:text="+"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="40dp"
-
-            android:textStyle="bold"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cardView"
-            android:layout_width="374dp"
-            android:layout_height="772dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginRight="20dp"
-
-
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/cardviewrepo"
-            app:cardBackgroundColor="@color/bacAzul"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.473"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.054"
-            card_view:cardCornerRadius="20dp"
-            card_view:cardElevation="10dp"
-            card_view:cardUseCompatPadding="true"
-            tools:ignore="MissingConstraints" />
+      android:id="@+id/floatingtbtn"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
+       android:background="black"
+       android:clickable="true"
+       android:src="@drawable/agregar"
+       app:layout_constraintHorizontal_bias="0.839"
+       app:layout_constraintLeft_toRightOf="@id/repositorios"
+       android:importantForAccessibility="no"
+       app:layout_constraintRight_toRightOf="parent"
 
 
-        />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
