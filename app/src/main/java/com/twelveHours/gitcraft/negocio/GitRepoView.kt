@@ -24,9 +24,9 @@ class GitRepoView {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-
         val repos = cache[token] ?: run {
             val authorization = token
+
             githubApiService.getRepo(user, authorization).enqueue(object : Callback<List<Repository>> {
                 override fun onResponse(
                     call: Call<List<Repository>>,

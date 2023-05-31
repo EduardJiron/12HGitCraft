@@ -64,6 +64,9 @@ class RepoAdacterVh(
                 Toast.makeText(it.context, "Repositorio eliminado", Toast.LENGTH_SHORT).show()
             }
 
+            binding.button5.setOnClickListener(){
+                fragmentChange.openContainerFragment()
+            }
 
         }
     }
