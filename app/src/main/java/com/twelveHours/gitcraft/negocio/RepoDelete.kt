@@ -1,5 +1,4 @@
 package com.twelveHours.gitcraft.negocio
-
 import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -8,17 +7,16 @@ import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RepoDelete {
+class RepoDelete(private val authToken: String) {
     private val BASE_URL = "https://api.github.com/"
-    private val AUTH_TOKEN = "UserName().getToken()"
     private val githubService: GitHubServiceRequest
 
-    init {8
+    init {
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val originalRequest: Request = chain.request()
                 val requestWithAuthorization: Request = originalRequest.newBuilder()
-                    .header("Authorization", "token $AUTH_TOKEN")
+                    .header("Authorization", "token $authToken")
                     .build()
                 chain.proceed(requestWithAuthorization)
             }

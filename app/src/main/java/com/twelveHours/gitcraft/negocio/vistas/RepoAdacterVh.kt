@@ -46,34 +46,25 @@ class RepoAdacterVh(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(repository: Repository) {
-            val usuario =" UserName().getUserName()"
+            val usuario = UserName.getUserName()
             binding.tvNombre.text = repository.name
             binding.tvDescripcion.text = repository.description ?: "No hay descripcion"
             binding.tvLenguaje.text = repository.language ?: "lenguaje no identificado"
             binding.tvFecha.text = repository.created_at.substring(0, 10).replace("-", "/")
 
             binding.tvNombre.setOnClickListener {
-
-
-
-
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/${usuario}/${repository.name}/archive/refs/heads/master.zip\n"))
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/$usuario/${repository.name}/archive/refs/heads/master.zip\n"))
                 it.context.startActivity(intent)
             }
 
             binding.button4.setOnClickListener {
-                val repoDe = RepoDelete()
+                val repoDe = RepoDelete(UserName.getToken())
                 repoDe.deleteRepository(usuario, repository.name)
                 btn.onUpdate()
-
                 Toast.makeText(it.context, "Repositorio eliminado", Toast.LENGTH_SHORT).show()
-
             }
 
-            binding.button5.setOnClickListener(){
 
-            fragmentChange.openContainerFragment()
-            }
         }
     }
 }
