@@ -19,7 +19,7 @@ class GitUserView {
     ) {
 
         val githubApiService = Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl("https://api.github.co/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(GitHubServiceRequest::class.java)
