@@ -44,11 +44,17 @@ class CuentaCraftFragment : Fragment() {
         val usuarioCraft : EditText = view.findViewById(R.id.txtNombreGraft)
         val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
         val btnAgregar: Button = view.findViewById(R.id.btnAgregarGraft)
-
+        val cancel : Button =  view.findViewById(R.id.btnCancGraft)
         //val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
 
        // val dao = room.usuarioLoginDao()
-
+        cancel.setOnClickListener {
+            val fragment = LoginFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
 
 
