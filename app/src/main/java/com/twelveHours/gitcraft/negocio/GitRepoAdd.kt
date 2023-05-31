@@ -7,10 +7,10 @@ import org.json.JSONObject
 class GitRepoAdd {
 
 
-    private val AUTH_TOKEN = "UserName().getToken()"
 
 
-    fun crearRepositorio(nombre:String,descripcion:String) {
+
+    fun crearRepositorio(nombre:String,descripcion:String, AUTH_TOKEN:String) {
         val url = "https://api.github.com/user/repos"
         val headers = mapOf("Authorization" to "token $AUTH_TOKEN", "Content-Type" to "application/json")
         val repoData = JSONObject()

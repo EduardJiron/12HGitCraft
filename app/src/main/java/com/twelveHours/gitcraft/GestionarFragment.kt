@@ -108,7 +108,7 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-        val username = "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"
+
 
         val gitRepoView = GitRepoView()
         val user = UserName.getUserName()

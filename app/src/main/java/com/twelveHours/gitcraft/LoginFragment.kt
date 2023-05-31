@@ -57,7 +57,7 @@ class LoginFragment() : Fragment() {
 
             val user= usuarioCraft.text.toString()
             val userName = usuarioCraft.text.toString()
-            val token = "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"
+            val token = passwordCraft.text.toString()
 
             UserName.setUserName(userName)
             UserName.setToken(token)

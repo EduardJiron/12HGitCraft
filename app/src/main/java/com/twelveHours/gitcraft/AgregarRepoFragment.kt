@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.twelveHours.gitcraft.databinding.FragmentAgregarRepoBinding
 import com.twelveHours.gitcraft.negocio.GitRepoAdd
+import com.twelveHours.gitcraft.negocio.UserName
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,14 +52,14 @@ class AgregarRepoFragment : Fragment() {
             val gitRepoAdd = GitRepoAdd()
             val nombre = binding.txtNombre.text.toString()
             val descripcion = binding.txtDesc.text.toString()
-
+            val token= UserName.getToken()
 
 
             AlertDialog.Builder(binding.root.context)
                 .setTitle("Agregar repositorio")
                 .setMessage("¿Estás seguro de crear el repositorio?")
                 .setPositiveButton("si") { _, _ ->
-                    gitRepoAdd.crearRepositorio(nombre, descripcion)
+                    gitRepoAdd.crearRepositorio(nombre, descripcion,token)
 
                     Toast.makeText(context, "Repositorio creado", Toast.LENGTH_SHORT).show()
                 }
