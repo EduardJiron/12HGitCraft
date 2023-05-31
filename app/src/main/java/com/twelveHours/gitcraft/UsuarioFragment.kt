@@ -52,7 +52,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-        val username = "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"
+        val username = "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"
         val user="12HDeveloper"
         val gitUserView = GitUserView()
         gitUserView.getUser(githubApiService, "12HDeveloper", this)

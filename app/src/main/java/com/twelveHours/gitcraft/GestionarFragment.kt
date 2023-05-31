@@ -65,7 +65,7 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
         recyclerView = view.findViewById(R.id.cardView)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
-        val username = "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"
+        val username = "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"
         val user="12HDeveloper"
         gitRepoView.getRepoStar(githubApiService, username,user ,this)
 
@@ -112,7 +112,7 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-        val username = "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"
+        val username = "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"
         val user="12HDeveloper"
         val gitRepoView = GitRepoView()
         val repos: List<Repository> = gitRepoView.getRepoStar(githubApiService, username,user, this)

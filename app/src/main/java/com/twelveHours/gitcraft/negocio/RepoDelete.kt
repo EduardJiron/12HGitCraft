@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RepoDelete {
     private val BASE_URL = "https://api.github.com/"
-    private val AUTH_TOKEN = "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"
+    private val AUTH_TOKEN = "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"
     private val githubService: GitHubServiceRequest
 
     init {8
