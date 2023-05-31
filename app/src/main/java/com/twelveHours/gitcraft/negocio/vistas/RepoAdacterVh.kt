@@ -1,5 +1,6 @@
 package com.twelveHours.gitcraft.negocio.vistas
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
@@ -10,13 +11,15 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.twelveHours.gitcraft.R
 import com.twelveHours.gitcraft.databinding.ItemrepositoryBinding
+import com.twelveHours.gitcraft.datos.FragmentChange
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.negocio.RepoDelete
 import com.twelveHours.gitcraft.negocio.UserName
 
 class RepoAdacterVh(
     private var repository: List<Repository>,
-    private val btn: com.twelveHours.gitcraft.datos.ButtonClick
+    private val btn: com.twelveHours.gitcraft.datos.ButtonClick,
+    val fragmentChange: FragmentChange
 ) : RecyclerView.Adapter<RepoAdacterVh.ViewHolder>() {
 
     fun updateData(newRepos: List<Repository>) {
@@ -25,7 +28,7 @@ class RepoAdacterVh(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemrepositoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding, btn)
+        return ViewHolder(binding, btn, fragmentChange)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -38,7 +41,8 @@ class RepoAdacterVh(
 
     class ViewHolder(
         private val binding: ItemrepositoryBinding,
-        private val btn: com.twelveHours.gitcraft.datos.ButtonClick
+        private val btn: com.twelveHours.gitcraft.datos.ButtonClick,
+        val fragmentChange: FragmentChange
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(repository: Repository) {
@@ -63,6 +67,12 @@ class RepoAdacterVh(
                 btn.onUpdate()
 
                 Toast.makeText(it.context, "Repositorio eliminado", Toast.LENGTH_SHORT).show()
+
+            }
+
+            binding.button5.setOnClickListener(){
+
+            fragmentChange.openContainerFragment()
             }
         }
     }
