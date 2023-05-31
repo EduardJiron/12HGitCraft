@@ -46,7 +46,7 @@ class RepoAdacterVh(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(repository: Repository) {
-            val usuario = UserName().getUserName()
+            val usuario =" UserName().getUserName()"
             binding.tvNombre.text = repository.name
             binding.tvDescripcion.text = repository.description ?: "No hay descripcion"
             binding.tvLenguaje.text = repository.language ?: "lenguaje no identificado"

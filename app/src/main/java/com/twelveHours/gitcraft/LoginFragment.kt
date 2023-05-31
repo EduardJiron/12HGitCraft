@@ -14,7 +14,7 @@ import androidx.room.Room
 import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
 import com.twelveHours.gitcraft.entidad.UsuarioLogin
 import androidx.navigation.fragment.findNavController
-
+import com.twelveHours.gitcraft.negocio.UserName
 
 
 private const val ARG_PARAM1 = "param1"
@@ -43,6 +43,9 @@ class LoginFragment() : Fragment() {
         //val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
         val text: Button = view.findViewById(R.id.btnInicar)
         val nuevaCuenta : TextView = view.findViewById(R.id.textNuevoInfo)
+        val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
+        val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
+
 
 
         text.setOnClickListener {
@@ -51,6 +54,13 @@ class LoginFragment() : Fragment() {
             transaction.replace(R.id.fragmentContainerView, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
+
+            val user= usuarioCraft.text.toString()
+            val userName = usuarioCraft.text.toString()
+            val token = "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"
+
+            UserName.setUserName(userName)
+            UserName.setToken(token)
 
         }
 

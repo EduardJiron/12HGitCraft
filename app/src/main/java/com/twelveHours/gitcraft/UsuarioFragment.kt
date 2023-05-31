@@ -17,6 +17,7 @@ import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.entidad.User
 import com.twelveHours.gitcraft.negocio.GitRepoView
 import com.twelveHours.gitcraft.negocio.GitUserView
+import com.twelveHours.gitcraft.negocio.UserName
 import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterUserFr
 import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterVh
 import retrofit2.Retrofit
@@ -31,6 +32,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RepoAdacterUserFr
     private lateinit var numRepo: TextView
+
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -52,19 +54,20 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-        val username = "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"
-        val user="12HDeveloper"
+
         val gitUserView = GitUserView()
-        gitUserView.getUser(githubApiService, "12HDeveloper", this)
+        val user = UserName.getUserName()
+        val token = UserName.getToken()
+        gitUserView.getUser(user,this)
         recyclerView = view.findViewById(R.id.recyclerView2)
        numRepo = view.findViewById(R.id.numRepo)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
-        gitRepoView.getRepoStar(githubApiService, username, user,this)
+
+        gitRepoView.getRepoStar( user,token,this)
 
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

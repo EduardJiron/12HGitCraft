@@ -21,7 +21,7 @@ interface GitHubServiceRequest {
     @GET("users/{username}/starred")
     fun getStarred(@Path("username") username: String): Call<List<Repository>>
 
-    //numero de repositorios
+
     @GET("users/{username}")
     fun getNumberRepo(@Path("username") username: String): Call<User>
     @DELETE("repos/{owner}/{repoName}")

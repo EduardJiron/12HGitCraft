@@ -16,6 +16,7 @@ import com.twelveHours.gitcraft.datos.GitHubServiceRequest
 import com.twelveHours.gitcraft.datos.RepoCallback
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.negocio.GitRepoView
+import com.twelveHours.gitcraft.negocio.UserName
 import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterVh
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -54,20 +55,15 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        val githubApiService = Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(GitHubServiceRequest::class.java)
 
 
 
         recyclerView = view.findViewById(R.id.cardView)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
-        val username = "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"
-        val user="12HDeveloper"
-        gitRepoView.getRepoStar(githubApiService, username,user ,this)
+        val user = UserName.getUserName()
+        val token = UserName.getToken()
+        gitRepoView.getRepoStar( user, token, this)
 
         btnAdd = view.findViewById(R.id.btnAdd)
         btnAdd.setOnClickListener {
@@ -113,9 +109,11 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
             .create(GitHubServiceRequest::class.java)
 
         val username = "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"
-        val user="12HDeveloper"
+
         val gitRepoView = GitRepoView()
-        val repos: List<Repository> = gitRepoView.getRepoStar(githubApiService, username,user, this)
+        val user = UserName.getUserName()
+        val token = UserName.getToken()
+        val repos: List<Repository> = gitRepoView.getRepoStar(user,token,this)
         return repos
     }
 
