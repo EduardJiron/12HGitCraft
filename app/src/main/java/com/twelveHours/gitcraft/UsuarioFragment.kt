@@ -52,14 +52,15 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
             .build()
             .create(GitHubServiceRequest::class.java)
 
-        val username = "12HDeveloper"
+        val username = "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"
+        val user="12HDeveloper"
         val gitUserView = GitUserView()
-        gitUserView.getUser(githubApiService, username, this)
+        gitUserView.getUser(githubApiService, "12HDeveloper", this)
         recyclerView = view.findViewById(R.id.recyclerView2)
        numRepo = view.findViewById(R.id.numRepo)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
-        gitRepoView.getRepoStar(githubApiService, username, this)
+        gitRepoView.getRepoStar(githubApiService, username, user,this)
 
 
     }
