@@ -18,12 +18,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.765" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageUser"
         android:layout_width="75dp"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
-        android:background="@drawable/edit_text_rounded"
         android:stateListAnimator="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintCircleAngle="180"
