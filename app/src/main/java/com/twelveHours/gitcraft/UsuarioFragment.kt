@@ -16,6 +16,7 @@ import com.twelveHours.gitcraft.datos.UserCallback
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.entidad.User
 import com.twelveHours.gitcraft.negocio.GitRepoView
+import com.twelveHours.gitcraft.negocio.GitRepoViewStar
 import com.twelveHours.gitcraft.negocio.GitUserView
 import com.twelveHours.gitcraft.negocio.UserName
 import com.twelveHours.gitcraft.negocio.vistas.RepoAdacterUserFr
@@ -63,9 +64,9 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
 
        numRepo = view.findViewById(R.id.numRepo)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val gitRepoView = GitRepoView()
+        val gitRepoView = GitRepoViewStar()
 
-        gitRepoView.getRepoStar( user,token,this)
+        gitRepoView.getRepoStars( user,token,this)
 
 
     }
