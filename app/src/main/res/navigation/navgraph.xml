@@ -47,9 +47,6 @@
         <action
             android:id="@+id/loginL"
             app:destination="@id/mainActivity" />
-        <action
-            android:id="@+id/action_loginFragment_to_cuentaCraftFragment"
-            app:destination="@id/cuentaCraftFragment" />
     </fragment>
     <fragment
         android:id="@+id/agregarRepoFragment"
@@ -60,4 +57,16 @@
         android:name="com.twelveHours.gitcraft.CuentaCraftFragment"
         android:label="fragment_cuenta_craft"
         tools:layout="@layout/fragment_cuenta_craft" />
+    <fragment
+        android:id="@+id/loginCraftFragment"
+        android:name="com.twelveHours.gitcraft.LoginCraftFragment"
+        android:label="fragment_login_craft"
+        tools:layout="@layout/fragment_login_craft" >
+        <action
+            android:id="@+id/IrGithub"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/IrcrearUsaurioCraft"
+            app:destination="@id/cuentaCraftFragment" />
+    </fragment>
 </navigation>

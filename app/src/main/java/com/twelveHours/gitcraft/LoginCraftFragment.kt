@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import androidx.room.Room
-import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
-import com.twelveHours.gitcraft.entidad.UsuarioLogin
+import android.widget.TextView
+import com.twelveHours.gitcraft.negocio.UserName
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,10 +17,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [CuentaCraftFragment.newInstance] factory method to
+ * Use the [LoginCraftFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CuentaCraftFragment : Fragment() {
+class LoginCraftFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,21 +33,37 @@ class CuentaCraftFragment : Fragment() {
         }
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_login_craft, container, false)
+    }
+
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        val usuarioCraft : EditText = view.findViewById(R.id.txtNombreGraft)
-        val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
-        val btnAgregar: Button = view.findViewById(R.id.btnAgregarGraft)
-        val cancel : Button =  view.findViewById(R.id.btnCancGraft)
-        //val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
+        //val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
+        //val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
+        val iniciarC : Button = view.findViewById(R.id.btnInicarCraf)
+        val nuevaCuenta : TextView = view.findViewById(R.id.textNuevoInfo)
 
-       // val dao = room.usuarioLoginDao()
-        cancel.setOnClickListener {
-            val fragment = LoginCraftFragment()
+
+
+      iniciarC.setOnClickListener {
+          val fragment = LoginFragment()
+          val transaction = requireActivity().supportFragmentManager.beginTransaction()
+          transaction.replace(R.id.fragmentContainerView, fragment)
+          transaction.addToBackStack(null)
+          transaction.commit()
+      }
+
+        nuevaCuenta.setOnClickListener {
+            val fragment = CuentaCraftFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainerView, fragment)
             transaction.addToBackStack(null)
@@ -57,36 +71,21 @@ class CuentaCraftFragment : Fragment() {
         }
 
 
-
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cuenta_craft, container, false)
-    }
+
+
+
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CuentaCraftFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            CuentaCraftFragment().apply {
+            LoginCraftFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
     }
-
-
 }

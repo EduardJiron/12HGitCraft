@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val loginFragment = LoginFragment()
+        val loginFragment = LoginCraftFragment()
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
         transaction.replace(R.id.fragmentContainerView, loginFragment)
