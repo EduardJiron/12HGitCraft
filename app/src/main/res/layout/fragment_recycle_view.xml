@@ -12,44 +12,29 @@
 
         <TextView
             android:id="@+id/tvUsuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="12dp"
-            android:text="@string/Nombre"
+            android:layout_width="118dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/nunito"
+            android:text="Usuario"
             android:textColor="#c9d1d9"
             android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.091"
-            app:layout_constraintBottom_toTopOf="@+id/tvpasswor" />
-
-        <TextView
-            android:id="@+id/tvpasswor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/nunito"
-            android:text="@string/Descripcion"
-            android:textColor="#c9d1d9"
-            android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvUsuario"
+            app:layout_constraintHorizontal_bias="0.132"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1" />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="52dp"
             android:background="#c9d1d9"
-            app:layout_constraintTop_toBottomOf="@+id/tvpasswor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvUsuario" />
+
         <Button
             android:id="@+id/btnEliminarUser"
             android:layout_width="20dp"
@@ -60,11 +45,12 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintHorizontal_bias="0.906"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.232"
+            app:layout_constraintVertical_bias="0.296"
             tools:ignore="MissingConstraints" />
+
         <Button
             android:id="@+id/btnEditarUser"
             android:layout_width="25dp"
@@ -75,9 +61,10 @@
             android:text=""
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintHorizontal_bias="0.904"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnEliminarUser" />
+            app:layout_constraintTop_toBottomOf="@+id/btnEliminarUser"
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

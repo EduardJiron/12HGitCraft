@@ -67,6 +67,14 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
 
         gitRepoView.getRepoStar( user,token,this)
 
+        val confg: ImageView = view.findViewById(R.id.imgConfig)
+        confg.setOnClickListener {
+            val fragment = RecycleViewFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
     }
     override fun onCreateView(

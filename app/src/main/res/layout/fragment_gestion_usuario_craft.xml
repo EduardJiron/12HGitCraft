@@ -16,7 +16,7 @@
             android:layout_width="363dp"
             android:layout_height="40dp"
             android:fontFamily="@font/nunito_extrabold"
-            android:text="Edita tu usuario"
+            android:text="Edita tu usuario GitCraft"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25sp"
