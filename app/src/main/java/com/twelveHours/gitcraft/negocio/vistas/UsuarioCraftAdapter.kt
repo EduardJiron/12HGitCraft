@@ -1,5 +1,6 @@
 package com.twelveHours.gitcraft.negocio.vistas
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,14 @@ class UsuarioCraftAdapter(private val usuarioCraft : List<UsuarioLogin>): Recycl
         fun bindItems(usuarioCraft: UsuarioLogin){
             val textViewUsuario = itemView.findViewById(R.id.tvUsuario) as TextView
             textViewUsuario.text = usuarioCraft.usuario
+            val editarUsuario=itemView.findViewById(R.id.btnEditarUserCraft) as TextView
+
+
+            editarUsuario.setOnClickListener {
+
+            }
+
+
 
         }
     }

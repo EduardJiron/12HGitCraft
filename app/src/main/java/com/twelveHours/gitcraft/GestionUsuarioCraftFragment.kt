@@ -5,6 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.room.Room
+import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
+import com.twelveHours.gitcraft.entidad.UsuarioLogin
+import com.twelveHours.gitcraft.negocio.UserName
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +36,45 @@ class GestionUsuarioCraftFragment : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View,savedInstanceState: Bundle?){
+        super.onViewCreated(view, savedInstanceState)
+
+        val usuarioCraft : EditText = view.findViewById(R.id.tvUsuarioEdid)
+        val passwordCraft : EditText = view.findViewById(R.id.tvpassworEdid)
+        val cancelar : Button =  view.findViewById(R.id.btnCancelEdidCr)
+        val id = UserName.getUserId()
+        val editarUsuario: Button = view.findViewById(R.id.btnEditarUserCraft)
+
+        val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
+        val dao = room.usuarioLoginDao()
+
+
+        editarUsuario.setOnClickListener {
+            try {
+
+                if(usuarioCraft.text.toString().isEmpty() || passwordCraft.text.toString().isEmpty()){
+                    Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
+                }else{
+                    dao.update( usuario = usuarioCraft.text.toString(), password = passwordCraft.text.toString(), id = id)
+                    Toast.makeText(context, "Su usuario fue modificado exitosamente", Toast.LENGTH_LONG).show()
+                }
+            }
+            catch (e: Exception){
+                Toast.makeText(context, "Error al ingresar los datos", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        cancelar.setOnClickListener {
+            val fragment = RecycleViewFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +82,10 @@ class GestionUsuarioCraftFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_gestion_usuario_craft, container, false)
     }
+
+
+
+
 
     companion object {
         /**

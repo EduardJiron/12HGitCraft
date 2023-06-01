@@ -56,11 +56,11 @@ class CuentaCraftFragment : Fragment() {
                     Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
                 }else{
                     dao.insertarReg(usuarioLogin = UsuarioLogin(usuario = usuarioCraft.text.toString(), password = passwordCraft.text.toString()))
-                    Toast.makeText(context, "Sus datos fueron guardados!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Su usuario fue creado exitosamente!", Toast.LENGTH_LONG).show()
                 }
             }
             catch (e: Exception){
-                Toast.makeText(context, "Error al ingresar los datos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error al crear su usuario", Toast.LENGTH_LONG).show()
             }
         }
 

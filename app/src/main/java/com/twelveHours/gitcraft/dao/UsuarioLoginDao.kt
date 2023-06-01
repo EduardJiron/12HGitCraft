@@ -15,5 +15,8 @@ interface UsuarioLoginDao {
 
     @Query("SELECT * FROM tbl_usuarioscraft WHERE id= :id")
     fun obtRegistro(id:Int): Flow<UsuarioLogin>
+
+    @Query("UPDATE tbl_usuarioscraft SET usuario = :usuario, password = :password WHERE id = :id")
+    fun update(id: Int, usuario: String, password: String)
 }
 
