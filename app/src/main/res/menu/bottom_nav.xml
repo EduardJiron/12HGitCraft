@@ -9,9 +9,7 @@
     <item android:title="Gestionar"
         android:id="@+id/gestionarFragment"
         android:icon="@drawable/baseline_book_24"/>
-    <item android:title="Nuevo"
-        android:id="@+id/nuevoFragment"
-        android:icon="@drawable/baseline_add_box_24"/>
+
     <item android:title="Perfil"
         android:id="@+id/usuarioFragment"
        android:icon="@drawable/baseline_user_24"/>

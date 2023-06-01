@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import com.twelveHours.gitcraft.databinding.FragmentAgregarRepoBinding
 import com.twelveHours.gitcraft.negocio.GitRepoAdd
@@ -45,7 +46,15 @@ class AgregarRepoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentAgregarRepoBinding.bind(view)
+        val cancelar : Button =  view.findViewById(R.id.btnCancelar)
 
+        cancelar.setOnClickListener {
+            val fragment = GestionarFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
 
         binding.btnAgregar.setOnClickListener(){
@@ -58,12 +67,12 @@ class AgregarRepoFragment : Fragment() {
             AlertDialog.Builder(binding.root.context)
                 .setTitle("Agregar repositorio")
                 .setMessage("¿Estás seguro de crear el repositorio?")
-                .setPositiveButton("si") { _, _ ->
+                .setPositiveButton("Si") { _, _ ->
                     gitRepoAdd.crearRepositorio(nombre, descripcion,token)
 
                     Toast.makeText(context, "Repositorio creado", Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("no") { dialog, _ ->
+                .setNegativeButton("No") { dialog, _ ->
                     dialog.dismiss()
                     Toast.makeText(binding.root.context, "No se creó", Toast.LENGTH_SHORT).show()
                 }
@@ -71,6 +80,7 @@ class AgregarRepoFragment : Fragment() {
 
 
         }
+
 
     }
     companion object {
