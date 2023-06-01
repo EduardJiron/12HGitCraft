@@ -53,7 +53,7 @@ class LoginFragment() : Fragment() {
 
             //comprobación de que el usuario y la contraseña no estén vacíos
             if (usuarioCraft.text.toString().isEmpty() ) {
-                Toast.makeText(requireContext(), "Usuario o contraseña vacíos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "El usuario no puede estar vacio", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             else {
