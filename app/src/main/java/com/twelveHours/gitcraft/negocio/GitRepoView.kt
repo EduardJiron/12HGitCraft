@@ -19,7 +19,7 @@ class GitRepoView {
         callback: RepoCallback
     ): List<Repository> {
         val githubApiService = Retrofit.Builder()
-            .baseUrl("https://api.github.co/")
+            .baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(GitHubServiceRequest::class.java)

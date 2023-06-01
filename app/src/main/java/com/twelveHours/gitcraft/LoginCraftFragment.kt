@@ -9,14 +9,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.twelveHours.gitcraft.CuentaCraftFragment
-import com.twelveHours.gitcraft.R
+import androidx.room.Room
 import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
+import com.twelveHours.gitcraft.entidad.UsuarioLogin
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.PrintWriter
 
 class LoginCraftFragment : Fragment() {
     private lateinit var db: UsuarioLoginDatabase
@@ -27,10 +26,12 @@ class LoginCraftFragment : Fragment() {
     private lateinit var nuevaCuenta: TextView
 
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
     ): View? {
+       db = Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "UsuarioLogin").allowMainThreadQueries().build()
 
         return inflater.inflate(R.layout.fragment_login_craft, container, false)
 
@@ -39,7 +40,7 @@ class LoginCraftFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        db = UsuarioLoginDatabase.getInstance(requireContext())
+
 
         usuarioCraft = view.findViewById(R.id.editTextUsuario)
         passwordCraft = view.findViewById(R.id.editTextPassword)
@@ -66,26 +67,28 @@ class LoginCraftFragment : Fragment() {
 
     private fun login(username: String, password: String) {
         lifecycleScope.launch {
-            val user = db.usuarioLoginDao().getAllUser()
-                // Acceder al DAO para buscar el usuario
-
-
+            val user = withContext(Dispatchers.IO) {
+                db.usuarioLoginDao().getUserByUsernameAndPassword(username, password)
+            }
 
             if (user != null) {
-                for(it in user){
-                //funcional user
-                println("${it.password},${it.usuario}, ")
-                    Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
-            }
 
-                // El usuario y contraseña son correctos
-                // Realizar la lógica de inicio de sesión exitoso
+
+
+                    val fragment = LoginFragment()
+                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.fragmentContainerView, fragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+
+                Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context, "ingrese los datos correctos", Toast.LENGTH_SHORT).show()
-                // El usuario y/o contraseña son incorrectos
-                // Mostrar mensaje de error o realizar alguna acción
-            }
+                Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                usuarioCraft.setText("")
+                passwordCraft.setText("")
 
+            }
         }
     }
+
 }

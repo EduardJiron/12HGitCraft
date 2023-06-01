@@ -9,9 +9,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
 import com.twelveHours.gitcraft.entidad.UsuarioLogin
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,19 +55,23 @@ class CuentaCraftFragment : Fragment() {
 
         btnAgregar.setOnClickListener {
             try {
-
-                if(usuarioCraft.text.toString().isEmpty() || passwordCraft.text.toString().isEmpty()){
+                if (usuarioCraft.text.toString().isEmpty() || passwordCraft.text.toString().isEmpty()) {
                     Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
-                }else{
-                    dao.insertarReg(usuarioLogin = UsuarioLogin(usuario = usuarioCraft.text.toString(), password = passwordCraft.text.toString()))
-                    Toast.makeText(context, "Su usuario fue creado exitosamente!", Toast.LENGTH_LONG).show()
+                } else {
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.IO) {
+                            dao.insertarReg(UsuarioLogin(usuario = usuarioCraft.text.toString(), password = passwordCraft.text.toString()))
+                        }
+                        Toast.makeText(context, "Su usuario fue creado exitosamente!", Toast.LENGTH_LONG).show()
+                    }
+                    dao.getAllUser()?.forEach {
+                        println(it)
+                    }
                 }
-            }
-            catch (e: Exception){
+            } catch (e: Exception) {
                 Toast.makeText(context, "Error al crear su usuario", Toast.LENGTH_LONG).show()
             }
         }
-
         cancel.setOnClickListener {
             val fragment = LoginCraftFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()

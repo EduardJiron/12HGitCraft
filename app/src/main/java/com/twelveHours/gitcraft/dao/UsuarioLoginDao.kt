@@ -14,9 +14,9 @@ interface UsuarioLoginDao {
     fun insertarReg(usuarioLogin: UsuarioLogin)
 
     @Query("Select *from tbl_usuarioscraft")
-    fun getAllUser ():List<UsuarioLogin>
+    fun getAllUser ():List<UsuarioLogin>?
 
     @Query("SELECT * FROM tbl_usuarioscraft WHERE usuario = :usuario AND password = :password")
-    fun getUserByUsernameAndPassword(usuario: String, password: String): UsuarioLogin
+    fun getUserByUsernameAndPassword(usuario: String, password: String): UsuarioLogin?
 }
 
