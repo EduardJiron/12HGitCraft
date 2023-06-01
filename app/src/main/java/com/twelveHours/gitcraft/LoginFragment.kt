@@ -42,9 +42,10 @@ class LoginFragment() : Fragment() {
         //val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
         //val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
         val text: Button = view.findViewById(R.id.btnInicar)
-        val nuevaCuenta : TextView = view.findViewById(R.id.textNuevoInfo)
+      
         val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
-        val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
+        //Al R.id.editText lo cambié por editTextToken porque también le cambié el id en el .xml
+        val passwordCraft : EditText = view.findViewById(R.id.editTextToken)
 
 
 
@@ -64,13 +65,7 @@ class LoginFragment() : Fragment() {
 
         }
 
-        nuevaCuenta.setOnClickListener {
-            val fragment = CuentaCraftFragment()
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+
 
 
     }

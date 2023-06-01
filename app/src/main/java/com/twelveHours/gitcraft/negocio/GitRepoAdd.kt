@@ -11,7 +11,7 @@ class GitRepoAdd {
 
 
     fun crearRepositorio(nombre:String,descripcion:String, AUTH_TOKEN:String) {
-        val url = "https://api.github.com/user/repos"
+        val url = "https://api.github.com,/user/repos"
         val headers = mapOf("Authorization" to "token $AUTH_TOKEN", "Content-Type" to "application/json")
         val repoData = JSONObject()
         repoData.put("name", "$nombre")
