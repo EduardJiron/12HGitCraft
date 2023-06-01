@@ -44,7 +44,8 @@ class LoginFragment() : Fragment() {
         val text: Button = view.findViewById(R.id.btnInicar)
         val nuevaCuenta : TextView = view.findViewById(R.id.textNuevoInfo)
         val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
-        val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
+        //Al R.id.editText lo cambié por editTextToken porque también le cambié el id en el .xml
+        val passwordCraft : EditText = view.findViewById(R.id.editTextToken)
 
 
 
