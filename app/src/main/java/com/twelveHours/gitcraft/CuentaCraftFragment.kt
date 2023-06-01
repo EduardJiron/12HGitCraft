@@ -42,12 +42,28 @@ class CuentaCraftFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val usuarioCraft : EditText = view.findViewById(R.id.txtNombreGraft)
-        val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
+        val passwordCraft : EditText = view.findViewById(R.id.editTextPasswordCraft)
         val btnAgregar: Button = view.findViewById(R.id.btnAgregarGraft)
         val cancel : Button =  view.findViewById(R.id.btnCancGraft)
-        //val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
+        val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
 
-       // val dao = room.usuarioLoginDao()
+       val dao = room.usuarioLoginDao()
+
+        btnAgregar.setOnClickListener {
+            try {
+
+                if(usuarioCraft.text.toString().isEmpty() || passwordCraft.text.toString().isEmpty()){
+                    Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
+                }else{
+                    dao.insertarReg(usuarioLogin = UsuarioLogin(usuario = usuarioCraft.text.toString(), password = passwordCraft.text.toString()))
+                    Toast.makeText(context, "Sus datos fueron guardados!", Toast.LENGTH_LONG).show()
+                }
+            }
+            catch (e: Exception){
+                Toast.makeText(context, "Error al ingresar los datos", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         cancel.setOnClickListener {
             val fragment = LoginCraftFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()

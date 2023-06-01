@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.twelveHours.gitcraft.dao.UsuarioLoginDao
 import com.twelveHours.gitcraft.entidad.UsuarioLogin
 
-@Database(entities = [UsuarioLogin::class], version =1, exportSchema = false )
+@Database(entities = [UsuarioLogin::class], version =2, exportSchema = false )
 abstract class UsuarioLoginDatabase : RoomDatabase() {
 
     abstract fun usuarioLoginDao(): UsuarioLoginDao

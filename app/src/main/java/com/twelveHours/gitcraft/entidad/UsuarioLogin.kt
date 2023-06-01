@@ -9,5 +9,5 @@ data class UsuarioLogin(
         @PrimaryKey(autoGenerate = true) val idUser:Int =0,
         @ColumnInfo(name = "usuario") val usuario:String ?,
         @ColumnInfo(name = "password") val password: String ?,
-        @ColumnInfo(name = "estado") val estado: Int ?
+        @ColumnInfo(name = "estado") val estado: Int = 0
 )
