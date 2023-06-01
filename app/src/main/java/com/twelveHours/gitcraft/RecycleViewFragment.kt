@@ -50,8 +50,6 @@ class RecycleViewFragment : Fragment() {
 
 
 
-
-
     }
     companion object {
 
