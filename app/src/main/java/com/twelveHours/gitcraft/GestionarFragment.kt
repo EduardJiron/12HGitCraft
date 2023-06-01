@@ -93,7 +93,7 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
 
     override fun onError(errorMessage: String) {
         println("Error: $errorMessage")
-        Toast.makeText(context, "La vida no vale nada", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Hay un error!", Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {
