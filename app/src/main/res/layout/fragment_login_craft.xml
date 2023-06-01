@@ -16,7 +16,7 @@
             android:id="@+id/textBienvenidosUser"
             android:layout_width="363dp"
             android:layout_height="40dp"
-            android:text="Bienvenidos GitCraft"
+            android:text="Bienvenidos a GitCraft"
             android:fontFamily="@font/nunito_extrabold"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -68,45 +68,32 @@
             android:id="@+id/imageView2"
             android:layout_width="293dp"
             android:layout_height="220dp"
-            android:src="@drawable/gatoderecho"
+            android:src="@drawable/logonuevo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.203"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textBienvenidosUser"
-            app:layout_constraintVertical_bias="0.022" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="140dp"
-            android:layout_height="162dp"
-            android:rotation="-60"
-            android:src="@drawable/pic"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView2"
-            app:layout_constraintVertical_bias="0.362" />
+            app:layout_constraintVertical_bias="0.029" />
 
         <EditText
             android:id="@+id/editTextUsuario"
             android:layout_width="302dp"
             android:layout_height="56dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginBottom="124dp"
             android:background="@drawable/edit_text"
             android:ems="10"
-            android:hint="Usuario"
             android:fontFamily="@font/nunito"
+            android:hint="Usuario"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="@color/white"
+
             android:textColorHint="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/btnInicarCraf"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -121,9 +108,10 @@
             android:textColorHint="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/btnInicarCraf"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextUsuario" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextUsuario"
+            app:layout_constraintVertical_bias="0.537" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
