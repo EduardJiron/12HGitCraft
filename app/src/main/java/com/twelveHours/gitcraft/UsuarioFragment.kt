@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -68,6 +69,14 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
 
         gitRepoView.getRepoStars( user,token,this)
 
+        val confg: ImageView = view.findViewById(R.id.imgConfig)
+        confg.setOnClickListener {
+            val fragment = RecycleViewFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
     }
     override fun onCreateView(
@@ -115,6 +124,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
 
     override fun onError(errorMessage: String) {
         println("Error: $errorMessage")
+        Toast.makeText(context, "La vida no vale nada", Toast.LENGTH_LONG).show()
     }
 
     override fun onUpdate() {

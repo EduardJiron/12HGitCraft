@@ -12,55 +12,96 @@
     tools:ignore="ExtraText">
 
 
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="145dp"
+        android:layout_height="46dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@android:color/white"
+        android:text="Editar"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDesc"
+        app:layout_constraintVertical_bias="0.011" />
+
     <EditText
         android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="206dp"
-        android:layout_marginBottom="48dp"
-        android:hint="Name"
+        android:layout_width="375dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="148dp"
+        android:background="@drawable/edit_text"
+        android:ems="10"
+        android:fontFamily="@font/nunito"
+        android:inputType="textPersonName"
+        android:text="@string/Nombre"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/txtDesc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="80dp"
+        android:fontFamily="@font/nunito_extrabold"
+        android:text="Edita tu repositorio!"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="43dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="84dp"
+        android:src="@drawable/baseline_book_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.139" />
 
     <EditText
         android:id="@+id/txtDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtNombre"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginBottom="67dp"
-        android:hint="Description"
-        app:layout_constraintBottom_toTopOf="@+id/btnAgregar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
-
-    <Button
-        android:id="@+id/btnAgregar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtDesc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginBottom="318dp"
-        android:text="Add"
+        android:layout_width="385dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="336dp"
+        android:background="@drawable/edit_text"
+        android:ems="10"
+        android:fontFamily="@font/nunito"
+        android:inputType="textPersonName"
+        android:text="@string/Descripcion"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="145dp"
+        android:layout_height="46dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="256dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@android:color/white"
+        android:text="Cancelar"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDesc"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

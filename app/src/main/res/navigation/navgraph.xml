@@ -24,7 +24,11 @@
         android:id="@+id/usuarioFragment"
         android:name="com.twelveHours.gitcraft.UsuarioFragment"
         android:label="fragment_usuario"
-        tools:layout="@layout/fragment_usuario" />
+        tools:layout="@layout/fragment_usuario" >
+        <action
+            android:id="@+id/action_usuarioFragment_to_recycleViewFragment"
+            app:destination="@id/recycleViewFragment" />
+    </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.twelveHours.gitcraft.MainActivity"
@@ -47,9 +51,6 @@
         <action
             android:id="@+id/loginL"
             app:destination="@id/mainActivity" />
-        <action
-            android:id="@+id/action_loginFragment_to_cuentaCraftFragment"
-            app:destination="@id/cuentaCraftFragment" />
     </fragment>
     <fragment
         android:id="@+id/agregarRepoFragment"
@@ -60,4 +61,30 @@
         android:name="com.twelveHours.gitcraft.CuentaCraftFragment"
         android:label="fragment_cuenta_craft"
         tools:layout="@layout/fragment_cuenta_craft" />
+    <fragment
+        android:id="@+id/loginCraftFragment"
+        android:name="com.twelveHours.gitcraft.LoginCraftFragment"
+        android:label="fragment_login_craft"
+        tools:layout="@layout/fragment_login_craft" >
+        <action
+            android:id="@+id/IrGithub"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/IrcrearUsaurioCraft"
+            app:destination="@id/cuentaCraftFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recycleViewFragment"
+        android:name="com.twelveHours.gitcraft.RecycleViewFragment"
+        android:label="fragment_recycle_view"
+        tools:layout="@layout/fragment_recycle_view" >
+        <action
+            android:id="@+id/action_recycleViewFragment_to_gestionUsuarioCraftFragment"
+            app:destination="@id/gestionUsuarioCraftFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gestionUsuarioCraftFragment"
+        android:name="com.twelveHours.gitcraft.GestionUsuarioCraftFragment"
+        android:label="fragment_gestion_usuario_craft"
+        tools:layout="@layout/fragment_gestion_usuario_craft" />
 </navigation>

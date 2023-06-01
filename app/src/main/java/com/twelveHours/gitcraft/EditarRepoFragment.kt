@@ -45,9 +45,7 @@ class EditarRepoFragment : Fragment() {
         val nombre=binding.txtNombre.text.toString()
         val descripcion=binding.txtDesc.toString()
         val gitRepoEdit = GitRepoUpdate.getInstance(authToken)
-        binding.btnAgregar.setOnClickListener {
-            gitRepoEdit.editarRepositorio(reponame, nombre, descripcion)
-        }
+
 
 
     }
