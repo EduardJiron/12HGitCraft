@@ -14,13 +14,13 @@
             android:id="@+id/tvUsuario"
             android:layout_width="118dp"
             android:layout_height="42dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="@font/nunito"
             android:text="Usuario"
             android:textColor="#c9d1d9"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.132"
+            app:layout_constraintHorizontal_bias="0.133"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

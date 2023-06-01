@@ -13,10 +13,10 @@ interface UsuarioLoginDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertarReg(usuarioLogin: UsuarioLogin)
 
-    @Query("SELECT * FROM tbl_usuarioscraft WHERE id= :id")
-    fun obtRegistro(id:Int): Flow<UsuarioLogin>
+    @Query("Select *from tbl_usuarioscraft")
+    fun getAllUser ():List<UsuarioLogin>
 
-    @Query("UPDATE tbl_usuarioscraft SET usuario = :usuario, password = :password WHERE id = :id")
-    fun update(id: Int, usuario: String, password: String)
+    @Query("SELECT * FROM tbl_usuarioscraft WHERE usuario = :usuario AND password = :password")
+    fun getUserByUsernameAndPassword(usuario: String, password: String): UsuarioLogin
 }
 

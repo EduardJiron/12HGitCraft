@@ -1,5 +1,4 @@
 package com.twelveHours.gitcraft
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,84 +7,85 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.twelveHours.gitcraft.negocio.UserName
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.twelveHours.gitcraft.CuentaCraftFragment
+import com.twelveHours.gitcraft.R
+import com.twelveHours.gitcraft.db.UsuarioLoginDatabase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.PrintWriter
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginCraftFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginCraftFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var db: UsuarioLoginDatabase
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var usuarioCraft: EditText
+    private lateinit var passwordCraft: EditText
+    private lateinit var iniciarC: Button
+    private lateinit var nuevaCuenta: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_login_craft, container, false)
+
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
-        //val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
-        val iniciarC : Button = view.findViewById(R.id.btnInicarCraf)
-        val nuevaCuenta : TextView = view.findViewById(R.id.textNuevoInfo)
+        db = UsuarioLoginDatabase.getInstance(requireContext())
 
+        usuarioCraft = view.findViewById(R.id.editTextUsuario)
+        passwordCraft = view.findViewById(R.id.editTextPassword)
+        iniciarC = view.findViewById(R.id.btnInicarCraf)
+        nuevaCuenta = view.findViewById(R.id.textNuevoInfo)
 
+        iniciarC.setOnClickListener {
+            val username = usuarioCraft.text.toString()
+            val password = passwordCraft.text.toString()
 
-      iniciarC.setOnClickListener {
-          val fragment = LoginFragment()
-          val transaction = requireActivity().supportFragmentManager.beginTransaction()
-          transaction.replace(R.id.fragmentContainerView, fragment)
-          transaction.addToBackStack(null)
-          transaction.commit()
-      }
+            // Realizar el login
+            login(username, password)
+        }
 
         nuevaCuenta.setOnClickListener {
+            // Navegar a la pantalla de creación de cuenta
             val fragment = CuentaCraftFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainerView, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
-
-
     }
 
+    private fun login(username: String, password: String) {
+        lifecycleScope.launch {
+            val user = db.usuarioLoginDao().getAllUser()
+                // Acceder al DAO para buscar el usuario
 
 
 
-
-    companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginCraftFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+            if (user != null) {
+                for(it in user){
+                //funcional user
+                println("${it.password},${it.usuario}, ")
+                    Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
             }
+
+                // El usuario y contraseña son correctos
+                // Realizar la lógica de inicio de sesión exitoso
+            } else {
+                Toast.makeText(context, "ingrese los datos correctos", Toast.LENGTH_SHORT).show()
+                // El usuario y/o contraseña son incorrectos
+                // Mostrar mensaje de error o realizar alguna acción
+            }
+
+        }
     }
 }

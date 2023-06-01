@@ -140,4 +140,8 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
+    override fun openEditFragment() {
+
+    }
 }

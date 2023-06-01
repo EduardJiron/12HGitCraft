@@ -1,5 +1,6 @@
 package com.twelveHours.gitcraft
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,9 +46,8 @@ class CuentaCraftFragment : Fragment() {
         val passwordCraft : EditText = view.findViewById(R.id.editTextPasswordCraft)
         val btnAgregar: Button = view.findViewById(R.id.btnAgregarGraft)
         val cancel : Button =  view.findViewById(R.id.btnCancGraft)
-        val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "Persona").allowMainThreadQueries().build()
-
-       val dao = room.usuarioLoginDao()
+        val room= Room.databaseBuilder(requireContext(), UsuarioLoginDatabase::class.java, "UsuarioLogin").allowMainThreadQueries().build()
+        val dao = room.usuarioLoginDao()
 
         btnAgregar.setOnClickListener {
             try {

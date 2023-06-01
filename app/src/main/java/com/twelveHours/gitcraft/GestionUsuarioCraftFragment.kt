@@ -55,7 +55,7 @@ class GestionUsuarioCraftFragment : Fragment() {
                 if(usuarioCraft.text.toString().isEmpty() || passwordCraft.text.toString().isEmpty()){
                     Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
                 }else{
-                    dao.update( usuario = usuarioCraft.text.toString(), password = passwordCraft.text.toString(), id = id)
+
                     Toast.makeText(context, "Su usuario fue modificado exitosamente", Toast.LENGTH_LONG).show()
                 }
             }
