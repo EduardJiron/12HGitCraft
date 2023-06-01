@@ -23,7 +23,7 @@ class GitRepoUpdate private constructor(private val authToken: String) {
     }
 
     fun editarRepositorio(nombre: String, nuevoNombre: String, nuevaDescripcion: String) {
-        val url = "https://api.github.com/repos/12HDeveloper/$nombre"
+        val url = "https://api.github.com/repos/12HDeveloper/dsssd"
         val headers = mapOf("Authorization" to "token $authToken", "Content-Type" to "application/json")
         val repoData = JSONObject()
         repoData.put("name", nuevoNombre)

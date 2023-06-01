@@ -60,6 +60,7 @@ class UsuarioFragment : Fragment(), RepoCallback, UserCallback,ButtonClick {
         val token = UserName.getToken()
         gitUserView.getUser(user,this)
         recyclerView = view.findViewById(R.id.recyclerView2)
+
        numRepo = view.findViewById(R.id.numRepo)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val gitRepoView = GitRepoView()
