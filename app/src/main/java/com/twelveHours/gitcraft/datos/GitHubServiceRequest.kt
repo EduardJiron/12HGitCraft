@@ -18,8 +18,8 @@ interface GitHubServiceRequest {
     @GET("users/{user}/repos")
     fun getRepo(@Path("user") user: String, @Header("Authorization") authorization: String): Call<List<Repository>>
 
-    @GET("users/{username}/starred")
-    fun getStarred(@Path("username") username: String): Call<List<Repository>>
+    @GET("users/{user}/starred")
+    fun getStarred(@Path("user") user: String, @Header("Authorization") authorization: String): Call<List<Repository>>
 
 
     @GET("users/{username}")

@@ -14,6 +14,7 @@ import com.twelveHours.gitcraft.databinding.ItemrepositoryBinding
 import com.twelveHours.gitcraft.datos.FragmentChange
 import com.twelveHours.gitcraft.entidad.Repository
 import com.twelveHours.gitcraft.negocio.RepoDelete
+import com.twelveHours.gitcraft.negocio.RepoUpdate
 import com.twelveHours.gitcraft.negocio.UserName
 
 class RepoAdacterVh(
@@ -64,6 +65,10 @@ class RepoAdacterVh(
                 Toast.makeText(it.context, "Repositorio eliminado", Toast.LENGTH_SHORT).show()
             }
 
+            binding.button5.setOnClickListener(){
+                RepoUpdate.setUserName(repository.name)
+                fragmentChange.openContainerFragment()
+            }
 
         }
     }

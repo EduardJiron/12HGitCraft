@@ -9,11 +9,11 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class GitRepoView {
+class GitRepoViewStar {
 
     private val cache = mutableMapOf<String, List<Repository>>()
 
-    fun getRepoStar(
+    fun getRepoStars(
         user:String,
         token: String ,
         callback: RepoCallback
@@ -27,7 +27,8 @@ class GitRepoView {
         val repos = cache[token] ?: run {
             val authorization = token
 
-            githubApiService.getRepo(user, authorization).enqueue(object : Callback<List<Repository>> {
+            githubApiService.getStarred(user, authorization).enqueue(object :
+                Callback<List<Repository>> {
                 override fun onResponse(
                     call: Call<List<Repository>>,
                     response: Response<List<Repository>>
@@ -50,5 +51,4 @@ class GitRepoView {
 
         return repos
     }
-
 }
