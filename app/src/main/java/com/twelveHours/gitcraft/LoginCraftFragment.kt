@@ -71,24 +71,33 @@ class LoginCraftFragment : Fragment() {
                 db.usuarioLoginDao().getUserByUsernameAndPassword(username, password)
             }
 
-            if (user != null) {
 
 
 
-                    val fragment = LoginFragment()
-                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragmentContainerView, fragment)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+    //comprovar datos vacios
+    if (usuarioCraft.text.isEmpty() || passwordCraft.text.isEmpty()) {
+        Toast.makeText(context, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show()
+    }
+                else{
+        if (user != null) {
+            val fragment = LoginFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+            usuarioCraft.setText("")
+            passwordCraft.setText("")
 
-                Toast.makeText(context, "Ingrese los datos", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
-                usuarioCraft.setText("")
-                passwordCraft.setText("")
+        } else {
+            Toast.makeText(context, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+            usuarioCraft.setText("")
+            passwordCraft.setText("")
 
-            }
+        }
+    }
         }
     }
 
-}
+    }
+
+

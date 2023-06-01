@@ -42,7 +42,7 @@ class LoginFragment() : Fragment() {
         //val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
         //val passwordCraft : EditText = view.findViewById(R.id.editTextPassword)
         val text: Button = view.findViewById(R.id.btnInicar)
-      
+
         val usuarioCraft : EditText = view.findViewById(R.id.editTextUsuario)
         //Al R.id.editText lo cambié por editTextToken porque también le cambié el id en el .xml
         val passwordCraft : EditText = view.findViewById(R.id.editTextToken)
@@ -50,19 +50,26 @@ class LoginFragment() : Fragment() {
 
 
         text.setOnClickListener {
-            val fragment = ContainerFragment()
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
 
-            val user= usuarioCraft.text.toString()
-            val userName = usuarioCraft.text.toString()
-            val token = passwordCraft.text.toString()
+            //comprobación de que el usuario y la contraseña no estén vacíos
+            if (usuarioCraft.text.toString().isEmpty() ) {
+                Toast.makeText(requireContext(), "Usuario o contraseña vacíos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            else {
+                val fragment = ContainerFragment()
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragmentContainerView, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
 
-            UserName.setUserName(userName)
-            UserName.setToken(token)
+                val user = usuarioCraft.text.toString()
+                val userName = usuarioCraft.text.toString()
+                val token = passwordCraft.text.toString()
 
+                UserName.setUserName(userName)
+                UserName.setToken(token)
+            }
         }
 
 
