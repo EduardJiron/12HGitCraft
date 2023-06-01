@@ -13,9 +13,11 @@ import com.twelveHours.gitcraft.R
 import com.twelveHours.gitcraft.databinding.ItemrepositoryBinding
 import com.twelveHours.gitcraft.datos.FragmentChange
 import com.twelveHours.gitcraft.entidad.Repository
+import com.twelveHours.gitcraft.negocio.GitRepoAdd
 import com.twelveHours.gitcraft.negocio.RepoDelete
 import com.twelveHours.gitcraft.negocio.RepoUpdate
 import com.twelveHours.gitcraft.negocio.UserName
+//import kotlinx.coroutines.flow.internal.NoOpContinuation.context
 
 class RepoAdacterVh(
     private var repository: List<Repository>,
@@ -61,9 +63,23 @@ class RepoAdacterVh(
             binding.button4.setOnClickListener {
                 val repoDe = RepoDelete(UserName.getToken())
                 repoDe.deleteRepository(usuario, repository.name)
-                btn.onUpdate()
-                Toast.makeText(it.context, "Repositorio eliminado", Toast.LENGTH_SHORT).show()
+
+
+                AlertDialog.Builder(binding.root.context)
+                    .setTitle("Eliminar repositorio")
+                    .setMessage("¿Estás seguro de eliminar el repositorio?")
+                    .setPositiveButton("Si") { _, _ ->
+                        repoDe.deleteRepository(usuario, repository.name)
+                        btn.onUpdate()
+                        Toast.makeText(binding.root.context, "Repositorio eliminado!", Toast.LENGTH_SHORT).show()
+                    }
+                    .setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()
+                        Toast.makeText(binding.root.context, "No se eliminó", Toast.LENGTH_SHORT).show()
+                    }
+                    .show()
             }
+
 
             binding.button5.setOnClickListener(){
                 RepoUpdate.setUserName(repository.name)
