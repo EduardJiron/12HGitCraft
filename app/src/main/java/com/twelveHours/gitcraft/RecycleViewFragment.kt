@@ -46,26 +46,10 @@ class RecycleViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val borrarUserC : Button = view.findViewById(R.id.btnEliminarUser)
-        val editarUserC : Button = view.findViewById(R.id.btnEditarUser)
 
 
 
-       borrarUserC.setOnClickListener {
-            val fragment = LoginFragment()
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
 
-        editarUserC.setOnClickListener {
-            val fragment = GestionUsuarioCraftFragment()
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainerView, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
 
 
     }
