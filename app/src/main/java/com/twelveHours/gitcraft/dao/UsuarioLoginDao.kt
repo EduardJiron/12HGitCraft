@@ -6,13 +6,14 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.twelveHours.gitcraft.entidad.User
 import com.twelveHours.gitcraft.entidad.UsuarioLogin
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UsuarioLoginDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertarReg(usuarioLogin: UsuarioLogin)
 
-    @Query("SELECT * FROM tbl_usuarioscraft WHERE usuario = :usuario AND password = :password AND estado = :estado")
-    fun getUser(usuario: String, password: String, estado :Int): UsuarioLogin?
+    @Query("SELECT * FROM tbl_usuarioscraft WHERE id= :id")
+    fun obtRegistro(id:Int): Flow<UsuarioLogin>
 }
 
