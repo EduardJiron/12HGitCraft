@@ -133,7 +133,7 @@ class GestionarFragment : Fragment(), RepoCallback, ButtonClick,FragmentChange {
     override fun openContainerFragment() {
 
 
-        val fragment = EditarRepoFragment()
+        val fragment = WbRepoDownloadFragment()
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
 
         transaction.replace(R.id.fragmentContainerView, fragment)

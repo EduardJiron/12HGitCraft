@@ -1,13 +1,17 @@
 package com.twelveHours.gitcraft.negocio.vistas
 
 import android.app.AlertDialog
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.twelveHours.gitcraft.R
 import com.twelveHours.gitcraft.databinding.ItemrepositoryBinding
@@ -49,17 +53,30 @@ class RepoAdacterVh(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(repository: Repository) {
-            val usuario =UserName.getUserName()
+            val usuario =UserName.getUserName().trim()
             binding.tvNombre.text = repository.name
             binding.tvDescripcion.text = repository.description ?: "No hay descripcion"
             binding.tvLenguaje.text = repository.language ?: "lenguaje no identificado"
             binding.tvFecha.text = repository.created_at.substring(0, 10).replace("-", "/")
+            val url = "https://github.com/$usuario/${repository.name}/archive/refs/heads/master.zip\n"
 
             binding.tvNombre.setOnClickListener {
-             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/$usuario/${repository.name}/archive/refs/heads/master.zip\n"))
-                it.context.startActivity(intent)
 
 
+println(url)
+                val requests = DownloadManager.Request(Uri.parse(url))
+                    .setTitle("Descargando ${repository.name}")
+                    .setDescription(repository.description)
+                    .setDestinationInExternalPublicDir(
+
+                        Environment.DIRECTORY_DOWNLOADS,
+                        "${repository.name}.zip"
+                    )
+                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                val context = binding.root.context
+                val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                downloadManager.enqueue(requests)
+    Toast.makeText(binding.root.context, "Descargando repositorio", Toast.LENGTH_SHORT).show()
             }
 
             binding.button4.setOnClickListener {
@@ -84,6 +101,7 @@ class RepoAdacterVh(
 
 
             binding.button5.setOnClickListener(){
+                UserName.setUri("https://github.com/$usuario/${repository.name}/archive/refs/heads/master.zip\n")
                 RepoUpdate.setUserName(repository.name)
                 fragmentChange.openContainerFragment()
             }

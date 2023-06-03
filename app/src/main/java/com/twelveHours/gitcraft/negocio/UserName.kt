@@ -1,13 +1,20 @@
 package com.twelveHours.gitcraft.negocio
 
-import com.twelveHours.gitcraft.datos.UserNameObserver
-
 
 object UserName {
     private var userName: String = ""
     private var token: String = ""
     private var id: Int = 0
+    private var uri: String = ""
 
+
+
+    fun getUri(): String {
+        return uri
+    }
+    fun setUri(uri: String) {
+        this.uri = uri
+    }
     fun getUserName(): String {
         return userName
     }
